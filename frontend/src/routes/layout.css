@@ -1,0 +1,140 @@
+@import 'tailwindcss';
+@import '@fontsource/manrope/400.css';
+@import '@fontsource/manrope/500.css';
+@import '@fontsource/manrope/600.css';
+@import '@fontsource/manrope/700.css';
+@import '@fontsource/manrope/800.css';
+@import '@fontsource/ibm-plex-mono/400.css';
+@import '@fontsource/ibm-plex-mono/500.css';
+
+@theme {
+	--font-sans: 'Manrope', ui-sans-serif, system-ui, sans-serif;
+	--font-mono: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+	--font-display: 'Manrope', ui-sans-serif, system-ui, sans-serif;
+}
+
+:root,
+[data-theme='dark'] {
+	--bg: #050505;
+	--fg: #ffffff;
+	--muted: #a1a1aa;
+	--nav-bg: transparent;
+	--nav-border: rgba(255, 255, 255, 0.1);
+	--nav-link: #d4d4d8;
+	--panel: rgba(10, 10, 10, 0.95);
+	--grid-line: rgba(255, 255, 255, 0.055);
+	--code: rgba(255, 255, 255, 0.52);
+	--code-caret: rgba(255, 255, 255, 0.6);
+	--radial: rgba(255, 255, 255, 0.04);
+	--line: #71717a;
+	--social-border: rgba(255, 255, 255, 0.3);
+	--social-shadow: rgba(255, 255, 255, 0.12);
+	--social-fill-bg: #ffffff;
+	--social-fill-fg: #0a0a0a;
+	--cta-solid-bg: #ffffff;
+	--cta-solid-fg: #0a0a0a;
+	--cta-ghost-border: rgba(255, 255, 255, 0.8);
+	--cta-ghost-fg: #ffffff;
+	--profile-border: #ffffff;
+	--divider: rgba(63, 63, 70, 0.8);
+	--theme-btn-border: rgba(255, 255, 255, 0.15);
+}
+
+[data-theme='light'] {
+	--bg: #f3f4f6;
+	--fg: #0a0a0a;
+	--muted: #52525b;
+	--nav-bg: transparent;
+	--nav-border: rgba(0, 0, 0, 0.08);
+	--nav-link: #3f3f46;
+	--panel: rgba(255, 255, 255, 0.96);
+	--grid-line: rgba(0, 0, 0, 0.06);
+	--code: rgba(24, 24, 27, 0.42);
+	--code-caret: rgba(24, 24, 27, 0.55);
+	--radial: rgba(0, 0, 0, 0.03);
+	--line: #a1a1aa;
+	--social-border: rgba(0, 0, 0, 0.22);
+	--social-shadow: rgba(0, 0, 0, 0.08);
+	--social-fill-bg: #0a0a0a;
+	--social-fill-fg: #ffffff;
+	--cta-solid-bg: #0a0a0a;
+	--cta-solid-fg: #ffffff;
+	--cta-ghost-border: rgba(0, 0, 0, 0.75);
+	--cta-ghost-fg: #0a0a0a;
+	--profile-border: #0a0a0a;
+	--divider: rgba(161, 161, 170, 0.9);
+	--theme-btn-border: rgba(0, 0, 0, 0.12);
+}
+
+html {
+	scroll-behavior: smooth;
+	color-scheme: dark;
+	background: var(--bg);
+}
+
+html[data-theme='light'] {
+	color-scheme: light;
+}
+
+body {
+	margin: 0;
+	min-height: 100dvh;
+	background: var(--bg);
+	color: var(--fg);
+	font-family: var(--font-sans);
+	font-feature-settings: 'ss01' on, 'cv11' on;
+	letter-spacing: -0.011em;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	text-rendering: optimizeLegibility;
+	transition:
+		background-color 0.35s ease,
+		color 0.35s ease;
+}
+
+/* Custom scrollbar */
+* {
+	scrollbar-width: thin;
+	scrollbar-color: color-mix(in srgb, var(--fg) 28%, transparent) transparent;
+}
+
+*::-webkit-scrollbar {
+	width: 10px;
+	height: 10px;
+}
+
+*::-webkit-scrollbar-track {
+	background: transparent;
+}
+
+*::-webkit-scrollbar-thumb {
+	background: color-mix(in srgb, var(--fg) 22%, transparent);
+	border-radius: 999px;
+	border: 2px solid transparent;
+	background-clip: content-box;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+	background: color-mix(in srgb, var(--fg) 40%, transparent);
+	background-clip: content-box;
+	border: 2px solid transparent;
+}
+
+::selection {
+	background: color-mix(in srgb, var(--fg) 18%, transparent);
+	color: var(--fg);
+}
+
+@media (prefers-reduced-motion: reduce) {
+	html {
+		scroll-behavior: auto;
+	}
+
+	*,
+	*::before,
+	*::after {
+		animation-duration: 0.01ms !important;
+		animation-iteration-count: 1 !important;
+		transition-duration: 0.01ms !important;
+	}
+}
