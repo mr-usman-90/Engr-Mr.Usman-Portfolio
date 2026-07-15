@@ -1,6 +1,9 @@
 <script lang="ts">
 	import './layout.css';
 	import Navbar from '$lib/components/Navbar.svelte';
+	import PageTransition from '$lib/components/PageTransition.svelte';
+	import SmoothScroll from '$lib/components/SmoothScroll.svelte';
+	import LoadingSkeleton from '$lib/components/LoadingSkeleton.svelte';
 
 	let { children } = $props();
 </script>
@@ -24,5 +27,9 @@
 	<link rel="canonical" href="https://usmanfarooq.dev/" />
 </svelte:head>
 
+<SmoothScroll />
+<LoadingSkeleton />
 <Navbar />
-{@render children()}
+<PageTransition>
+	{@render children()}
+</PageTransition>

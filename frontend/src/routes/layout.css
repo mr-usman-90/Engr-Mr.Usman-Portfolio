@@ -72,6 +72,10 @@ html {
 	background: var(--bg);
 }
 
+html.lenis-active {
+	scroll-behavior: auto;
+}
+
 html[data-theme='light'] {
 	color-scheme: light;
 }

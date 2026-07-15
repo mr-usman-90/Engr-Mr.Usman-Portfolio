@@ -294,17 +294,15 @@
 			<ul class="tech-grid">
 				{#each technologies as tech}
 					<li class="tech-item">
-						<span class="tech-badge" aria-hidden="true">
-							<img
-								src={tech.src}
-								alt=""
-								width="40"
-								height="40"
-								loading="lazy"
-								decoding="async"
-								class="tech-icon"
-							/>
-						</span>
+						<img
+							src={tech.src}
+							alt=""
+							width="64"
+							height="64"
+							loading="lazy"
+							decoding="async"
+							class="tech-icon"
+						/>
 						<span class="tech-name">{tech.name}</span>
 						{#if 'sub' in tech && tech.sub}
 							<span class="tech-sub">{tech.sub}</span>
@@ -680,31 +678,21 @@
 		line-height: 1.45;
 	}
 
+	/* 12 icons → exactly 2 rows (6 + 6) */
 	.tech-grid {
 		list-style: none;
 		margin: 0;
-		padding: 0.25rem 0 0;
+		padding: 0.55rem 0 0.15rem;
 		display: grid;
-		grid-template-columns: repeat(2, minmax(0, 1fr));
-		gap: 1.15rem 0.85rem;
+		grid-template-columns: repeat(6, minmax(0, 1fr));
+		gap: 1.1rem 0.35rem;
+		align-items: center;
+		justify-items: center;
 	}
 
 	@media (min-width: 640px) {
 		.tech-grid {
-			grid-template-columns: repeat(4, minmax(0, 1fr));
-			gap: 1rem 0.75rem;
-		}
-	}
-
-	@media (min-width: 900px) {
-		.tech-grid {
-			grid-template-columns: repeat(6, minmax(0, 1fr));
-		}
-	}
-
-	@media (min-width: 1100px) {
-		.tech-grid {
-			grid-template-columns: repeat(12, minmax(0, 1fr));
+			gap: 1.6rem 1rem;
 		}
 	}
 
@@ -712,47 +700,32 @@
 		display: flex;
 		flex-direction: column;
 		align-items: center;
-		text-align: center;
-		gap: 0.45rem;
-	}
-
-	.tech-badge {
-		display: inline-flex;
-		align-items: center;
 		justify-content: center;
-		width: 4.5rem;
-		height: 4.5rem;
-		border-radius: 1rem;
-		border: 1px solid var(--nav-border);
-		color: var(--fg);
-		background: color-mix(in srgb, var(--fg) 3%, transparent);
-		overflow: hidden;
-		transition:
-			transform 0.3s ease,
-			border-color 0.3s ease,
-			box-shadow 0.3s ease;
-	}
-
-	@media (min-width: 640px) {
-		.tech-badge {
-			width: 3.15rem;
-			height: 3.15rem;
-			border-radius: 0.9rem;
-		}
+		gap: 0.4rem;
+		text-align: center;
 	}
 
 	.tech-icon {
-		width: 2.65rem;
-		height: 2.65rem;
+		width: clamp(2.55rem, 11.5vw, 3rem);
+		height: clamp(2.55rem, 11.5vw, 3rem);
 		object-fit: contain;
 		filter: grayscale(1) brightness(1.15) contrast(1.05);
-		transition: filter 0.3s ease;
+		transition:
+			filter 0.3s ease,
+			transform 0.3s ease;
 	}
 
 	@media (min-width: 640px) {
 		.tech-icon {
-			width: 2.15rem;
-			height: 2.15rem;
+			width: 3.35rem;
+			height: 3.35rem;
+		}
+	}
+
+	@media (min-width: 1024px) {
+		.tech-icon {
+			width: 3.85rem;
+			height: 3.85rem;
 		}
 	}
 
@@ -760,13 +733,8 @@
 		filter: grayscale(1) brightness(0.55) contrast(1.15);
 	}
 
-	.tech-item:hover .tech-badge {
-		transform: translateY(-3px);
-		border-color: color-mix(in srgb, var(--fg) 35%, transparent);
-		box-shadow: 0 8px 18px color-mix(in srgb, var(--fg) 10%, transparent);
-	}
-
 	.tech-item:hover .tech-icon {
+		transform: translateY(-3px) scale(1.06);
 		filter: grayscale(1) brightness(1.35) contrast(1.08);
 	}
 
@@ -775,30 +743,25 @@
 	}
 
 	.tech-name {
-		font-size: 0.78rem;
+		font-size: 0.62rem;
 		font-weight: 600;
 		color: var(--muted);
-		line-height: 1.25;
+		line-height: 1.2;
+		max-width: 4.8rem;
 	}
 
 	@media (min-width: 640px) {
 		.tech-name {
-			font-size: 0.68rem;
+			font-size: 0.7rem;
+			max-width: 5.5rem;
 		}
 	}
 
 	.tech-sub {
-		font-size: 0.62rem;
+		font-size: 0.55rem;
 		color: color-mix(in srgb, var(--muted) 80%, transparent);
 		line-height: 1.2;
-		max-width: 6.5rem;
-	}
-
-	@media (min-width: 640px) {
-		.tech-sub {
-			font-size: 0.58rem;
-			max-width: 5.5rem;
-		}
+		max-width: 5.5rem;
 	}
 
 	@media (prefers-reduced-motion: reduce) {
