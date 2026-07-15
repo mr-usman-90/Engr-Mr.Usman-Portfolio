@@ -18,8 +18,14 @@
 
 		gsap.fromTo(
 			stageEl,
-			{ opacity: 0, y: 22 },
-			{ opacity: 1, y: 0, duration: 0.58, ease: 'power3.out', clearProps: 'transform' }
+			{ opacity: 0, y: 18 },
+			{
+				opacity: 1,
+				y: 0,
+				duration: 0.55,
+				ease: 'power3.out',
+				clearProps: 'all'
+			}
 		);
 	});
 </script>
@@ -30,7 +36,8 @@
 
 <style>
 	.page-stage {
+		position: relative;
+		z-index: 1;
 		min-height: 100dvh;
-		will-change: opacity, transform;
 	}
 </style>

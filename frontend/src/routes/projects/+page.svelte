@@ -3,7 +3,7 @@
 </script>
 
 <svelte:head>
-	<title>Projects — Mr.Usman Software Engineer</title>
+	<title>Projects - Mr.Usman Software Engineer</title>
 	<meta
 		name="description"
 		content="Selected software projects by Engr. Mr. Usman — full stack, web, and desktop applications."

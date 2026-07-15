@@ -4,6 +4,7 @@
 	import PageTransition from '$lib/components/PageTransition.svelte';
 	import SmoothScroll from '$lib/components/SmoothScroll.svelte';
 	import LoadingSkeleton from '$lib/components/LoadingSkeleton.svelte';
+	import MathGrid from '$lib/components/MathGrid.svelte';
 
 	let { children } = $props();
 </script>
@@ -27,6 +28,7 @@
 	<link rel="canonical" href="https://usmanfarooq.dev/" />
 </svelte:head>
 
+<MathGrid />
 <SmoothScroll />
 <LoadingSkeleton />
 <Navbar />

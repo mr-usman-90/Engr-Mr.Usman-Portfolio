@@ -42,6 +42,18 @@
 			meta: 'Advanced software engineering practice & systems design'
 		},
 		{
+			year: '2023 - 2024',
+			title: 'Cloud Computing Certification',
+			place: 'Global Tech Institute (Demo)',
+			meta: 'Cloud architecture, deployment models, and managed services fundamentals'
+		},
+		{
+			year: '2022 - 2023',
+			title: 'Computer Networking Diploma',
+			place: 'Network Academy Multan (Demo)',
+			meta: 'LAN/WAN, TCP/IP, routing basics, and network security foundations'
+		},
+		{
 			year: '2020 - 2024',
 			title: 'BS in Computer Science',
 			place: 'Bahauddin Zakariya University Multan',
@@ -69,6 +81,18 @@
 			meta: 'Founded and launched a software company focused on modern, scalable digital products and client solutions.'
 		},
 		{
+			year: '2024 - Present',
+			title: 'Cloud Computing Specialist',
+			place: 'Prime Softnox Solutions',
+			meta: 'Designed and managed cloud deployments, storage, and scalable infrastructure for client products.'
+		},
+		{
+			year: '2023 - Present',
+			title: 'Networking Engineer (Part-time)',
+			place: 'Nexus Link Solutions (Demo)',
+			meta: 'Configured networks, troubleshooting connectivity, and supporting secure local/remote infrastructure.'
+		},
+		{
 			year: '2023 - Present',
 			title: 'Software Engineer',
 			place: 'Tech Solutions Inc.',
@@ -88,19 +112,33 @@
 		}
 	] as const;
 
-	const technologies = [
-		{ name: 'JavaScript', src: '/tech/javascript.png' },
-		{ name: 'TypeScript', src: '/tech/typescript.png' },
-		{ name: 'React', src: '/tech/react.png' },
-		{ name: 'Next.js', src: '/tech/nextjs.svg' },
-		{ name: 'Node.js', src: '/tech/node.png' },
-		{ name: 'Express.js', src: '/tech/express.png' },
-		{ name: 'MongoDB', src: '/tech/mongodb.png' },
-		{ name: 'PostgreSQL', src: '/tech/postgresql.png' },
-		{ name: 'Supabase', src: '/tech/supabase.png' },
-		{ name: 'Firebase', src: '/tech/firebase.png' },
-		{ name: 'Docker', src: '/tech/docker.png' },
-		{ name: 'AWS', src: '/tech/aws.png', sub: 'EC2 · S3 · Lambda' }
+	const techRows = [
+		[
+			{ name: 'JavaScript', src: '/tech/javascript.png' },
+			{ name: 'TypeScript', src: '/tech/typescript.png' },
+			{ name: 'Prisma', src: '/tech/prisma.png' },
+			{ name: 'Zod', src: '/tech/zod.png' },
+			{ name: 'Fastify', src: '/tech/fastify.png' },
+			{ name: 'SvelteKit', src: '/tech/sveltekit.png' }
+		],
+		[
+			{ name: 'MongoDB', src: '/tech/mongodb.png' },
+			{ name: 'Docker', src: '/tech/docker.png' },
+			{ name: 'Supabase', src: '/tech/supabase.png' },
+			{ name: 'Firebase', src: '/tech/firebase.png' },
+			{ name: 'GitHub', src: '/tech/github.png' },
+			{ name: 'AWS', src: '/tech/aws.png', sub: 'EC2 · S3 · Lambda' }
+		],
+		[
+			{ name: 'Cloud Computing', src: '/tech/cloud.svg' },
+			{ name: 'Networking', src: '/tech/networking.svg' },
+			{ name: 'Tailwind CSS', src: '/tech/tailwind.png' },
+			{ name: 'React', src: '/tech/react.png' },
+			{ name: 'Next.js', src: '/tech/nextjs.svg' },
+			{ name: 'Node.js', src: '/tech/node.png' },
+			{ name: 'Express.js', src: '/tech/express.png' },
+			{ name: 'PostgreSQL', src: '/tech/postgresql.png' }
+		]
 	] as const;
 
 	const typePhrases = ['Engr.Mr.Usman', 'Software Engineer', 'Full Stack Developer'] as const;
@@ -152,8 +190,6 @@
 </script>
 
 <section id="about" class="about relative" aria-label="About">
-	<div class="about-grid pointer-events-none" aria-hidden="true"></div>
-
 	<div class="relative z-10 mx-auto max-w-6xl px-4 pb-20 pt-28 sm:px-6 lg:px-8 lg:pb-24 lg:pt-32">
 		<div class="grid items-start gap-10 lg:grid-cols-[240px_1fr] lg:gap-14 xl:grid-cols-[260px_1fr]">
 			<div class="flex flex-col items-center text-center lg:items-center">
@@ -183,7 +219,9 @@
 				</h2>
 				<p class="about-copy mt-2 max-w-2xl">
 					A passionate Software Engineer skilled in building modern, scalable, and high-performance web
-					applications. I love solving problems with clean code and innovative solutions.
+					applications. I love solving problems with clean code and innovative solutions. I also have
+					hands-on expertise and experience in <strong>Cloud Computing</strong> and
+					<strong>Networking</strong>.
 					<br />
 					I am the <strong>Founder &amp; CEO</strong> of
 					<strong>Prime Softnox Solutions</strong>, a software company launched in
@@ -291,25 +329,32 @@
 				<h3 id="tech-heading">TECHNOLOGIES & TOOLS</h3>
 			</header>
 
-			<ul class="tech-grid">
-				{#each technologies as tech}
-					<li class="tech-item">
-						<img
-							src={tech.src}
-							alt=""
-							width="64"
-							height="64"
-							loading="lazy"
-							decoding="async"
-							class="tech-icon"
-						/>
-						<span class="tech-name">{tech.name}</span>
-						{#if 'sub' in tech && tech.sub}
-							<span class="tech-sub">{tech.sub}</span>
-						{/if}
-					</li>
-				{/each}
-			</ul>
+			{#each techRows as row, rowIndex}
+				<ul
+					class="tech-grid"
+					class:tech-grid-wide={row.length > 6}
+					class:tech-grid-follow={rowIndex > 0}
+					aria-label={`Technologies row ${rowIndex + 1}`}
+				>
+					{#each row as tech}
+						<li class="tech-item">
+							<img
+								src={tech.src}
+								alt=""
+								width="64"
+								height="64"
+								loading="lazy"
+								decoding="async"
+								class="tech-icon"
+							/>
+							<span class="tech-name">{tech.name}</span>
+							{#if 'sub' in tech && tech.sub}
+								<span class="tech-sub">{tech.sub}</span>
+							{/if}
+						</li>
+					{/each}
+				</ul>
+			{/each}
 		</section>
 	</div>
 </section>
@@ -319,18 +364,6 @@
 		color: var(--fg);
 		background: transparent;
 		isolation: isolate;
-	}
-
-	.about-grid {
-		position: fixed;
-		inset: 0;
-		z-index: 0;
-		background-image:
-			linear-gradient(var(--grid-line) 1px, transparent 1px),
-			linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
-		background-size: 56px 56px;
-		opacity: 0.9;
-		mask-image: radial-gradient(ellipse at center, black 40%, transparent 88%);
 	}
 
 	.profile-ring {
@@ -678,21 +711,31 @@
 		line-height: 1.45;
 	}
 
-	/* 12 icons → exactly 2 rows (6 + 6) */
 	.tech-grid {
 		list-style: none;
 		margin: 0;
 		padding: 0.55rem 0 0.15rem;
 		display: grid;
-		grid-template-columns: repeat(6, minmax(0, 1fr));
-		gap: 1.1rem 0.35rem;
-		align-items: center;
+		grid-template-columns: repeat(3, minmax(0, 1fr));
+		gap: 1.1rem 0.45rem;
+		align-items: start;
 		justify-items: center;
+	}
+
+	.tech-grid-follow {
+		margin-top: 0.95rem;
+		padding-top: 0.95rem;
+		border-top: 1px solid color-mix(in srgb, var(--fg) 8%, transparent);
 	}
 
 	@media (min-width: 640px) {
 		.tech-grid {
-			gap: 1.6rem 1rem;
+			grid-template-columns: repeat(6, minmax(0, 1fr));
+			gap: 1.35rem 0.85rem;
+		}
+
+		.tech-grid-wide {
+			grid-template-columns: repeat(8, minmax(0, 1fr));
 		}
 	}
 

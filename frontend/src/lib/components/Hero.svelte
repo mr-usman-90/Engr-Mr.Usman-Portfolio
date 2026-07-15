@@ -204,7 +204,6 @@ git push origin main`
 	class="hero relative flex min-h-dvh flex-col overflow-hidden"
 	aria-label="Hero"
 >
-	<div class="hero-grid pointer-events-none" aria-hidden="true"></div>
 	<div class="hero-radial pointer-events-none absolute inset-0" aria-hidden="true"></div>
 
 	<div class="relative z-10 flex flex-1 flex-col">
@@ -338,30 +337,8 @@ git push origin main`
 		transition: color 0.35s ease;
 	}
 
-	.hero-grid {
-		position: fixed;
-		inset: 0;
-		z-index: 0;
-		background-image:
-			linear-gradient(var(--grid-line) 1px, transparent 1px),
-			linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
-		background-size: 48px 48px;
-		mask-image: radial-gradient(ellipse at center, black 40%, transparent 82%);
-		animation: net-drift 28s linear infinite;
-		will-change: background-position;
-	}
-
 	.hero-radial {
 		background: radial-gradient(ellipse at center, var(--radial), transparent 55%);
-	}
-
-	@keyframes net-drift {
-		0% {
-			background-position: 0 0;
-		}
-		100% {
-			background-position: 48px 48px;
-		}
 	}
 
 	.code-snippet {
@@ -475,12 +452,6 @@ git push origin main`
 	@keyframes blink {
 		50% {
 			opacity: 0;
-		}
-	}
-
-	@media (prefers-reduced-motion: reduce) {
-		.hero-grid {
-			animation: none;
 		}
 	}
 

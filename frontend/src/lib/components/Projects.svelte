@@ -11,6 +11,7 @@
 	} from '@lucide/svelte';
 	import GithubIcon from '$lib/components/icons/GithubIcon.svelte';
 	import SkeletonImage from '$lib/components/SkeletonImage.svelte';
+	import ProjectModal from '$lib/components/ProjectModal.svelte';
 
 	type Category = 'web' | 'desktop' | 'fullstack' | 'other';
 	type Filter = 'all' | Category;
@@ -24,9 +25,29 @@
 		tech: string[];
 		theme: string;
 		image: string;
+		images: string[];
 		liveUrl: string;
 		codeUrl: string;
 	};
+
+	const galleryPool = [
+		'/projects/school.jpg',
+		'/projects/pos.jpg',
+		'/projects/ecommerce.jpg',
+		'/projects/inventory.jpg',
+		'/projects/portfolio.jpg',
+		'/projects/tasks.jpg',
+		'/projects/school.jpg',
+		'/projects/ecommerce.jpg',
+		'/projects/pos.jpg',
+		'/projects/inventory.jpg'
+	] as const;
+
+	function withGallery(cover: string): string[] {
+		const rest = galleryPool.filter((src) => src !== cover);
+		const mixed = [cover, ...rest, ...galleryPool];
+		return mixed.slice(0, 10);
+	}
 
 	const filters: { id: Filter; label: string; Icon: typeof LayoutGrid }[] = [
 		{ id: 'all', label: 'All Projects', Icon: LayoutGrid },
@@ -47,6 +68,7 @@
 			tech: ['React', 'Node.js', 'MongoDB', 'Tailwind'],
 			theme: '#a855f7',
 			image: '/projects/school.jpg',
+			images: withGallery('/projects/school.jpg'),
 			liveUrl: '#',
 			codeUrl: 'https://github.com/engr-mr-usman'
 		},
@@ -60,6 +82,7 @@
 			tech: ['React', 'Express.js', 'MongoDB', 'Socket.io'],
 			theme: '#10b981',
 			image: '/projects/pos.jpg',
+			images: withGallery('/projects/pos.jpg'),
 			liveUrl: '#',
 			codeUrl: 'https://github.com/engr-mr-usman'
 		},
@@ -73,6 +96,7 @@
 			tech: ['Next.js', 'Tailwind', 'Stripe', 'MongoDB'],
 			theme: '#3b82f6',
 			image: '/projects/ecommerce.jpg',
+			images: withGallery('/projects/ecommerce.jpg'),
 			liveUrl: '#',
 			codeUrl: 'https://github.com/engr-mr-usman'
 		},
@@ -86,6 +110,7 @@
 			tech: ['Electron', 'SQLite', 'JavaScript'],
 			theme: '#f59e0b',
 			image: '/projects/inventory.jpg',
+			images: withGallery('/projects/inventory.jpg'),
 			liveUrl: '#',
 			codeUrl: 'https://github.com/engr-mr-usman'
 		},
@@ -99,6 +124,7 @@
 			tech: ['HTML', 'CSS', 'JavaScript', 'GSAP'],
 			theme: '#8b5cf6',
 			image: '/projects/portfolio.jpg',
+			images: withGallery('/projects/portfolio.jpg'),
 			liveUrl: '/',
 			codeUrl: 'https://github.com/engr-mr-usman'
 		},
@@ -112,21 +138,25 @@
 			tech: ['React', 'Firebase', 'Tailwind', 'Framer Motion'],
 			theme: '#06b6d4',
 			image: '/projects/tasks.jpg',
+			images: withGallery('/projects/tasks.jpg'),
 			liveUrl: '#',
 			codeUrl: 'https://github.com/engr-mr-usman'
 		}
 	];
 
 	let activeFilter = $state<Filter>('all');
+	let selected = $state<Project | null>(null);
 
 	const visibleProjects = $derived(
 		activeFilter === 'all' ? projects : projects.filter((p) => p.category === activeFilter)
 	);
+
+	function openProject(project: Project) {
+		selected = project;
+	}
 </script>
 
 <section id="projects" class="projects" aria-label="Projects">
-	<div class="projects-grid-bg" aria-hidden="true"></div>
-
 	<div class="relative z-10 mx-auto max-w-6xl px-4 pb-20 pt-28 sm:px-6 lg:px-8 lg:pb-24 lg:pt-32">
 		<header class="projects-hero">
 			<p class="projects-kicker">MY WORK</p>
@@ -156,7 +186,20 @@
 
 		<div class="cards-grid">
 			{#each visibleProjects as project (project.id)}
-				<article class="project-card" style={`--theme:${project.theme}`}>
+				<div
+					class="project-card"
+					style={`--theme:${project.theme}`}
+					role="button"
+					tabindex="0"
+					aria-label={`Open ${project.title} details`}
+					onclick={() => openProject(project)}
+					onkeydown={(e) => {
+						if (e.key === 'Enter' || e.key === ' ') {
+							e.preventDefault();
+							openProject(project);
+						}
+					}}
+				>
 					<div class="preview">
 						<SkeletonImage src={project.image} />
 					</div>
@@ -176,22 +219,17 @@
 						</ul>
 
 						<div class="card-footer">
-							<a
-								class="card-link"
-								href={project.liveUrl}
-								target={project.liveUrl.startsWith('http') ? '_blank' : undefined}
-								rel="noreferrer"
-							>
+							<span class="card-link">
 								Live Demo
 								<ExternalLink class="h-3.5 w-3.5" strokeWidth={2} />
-							</a>
-							<a class="card-link" href={project.codeUrl} target="_blank" rel="noreferrer">
+							</span>
+							<span class="card-link">
 								View Code
 								<GithubIcon class="h-3.5 w-3.5" />
-							</a>
+							</span>
 						</div>
 					</div>
-				</article>
+				</div>
 			{/each}
 		</div>
 
@@ -217,24 +255,16 @@
 	</div>
 </section>
 
+{#if selected}
+	<ProjectModal project={selected} onClose={() => (selected = null)} />
+{/if}
+
 <style>
 	.projects {
 		color: var(--fg);
 		background: transparent;
 		isolation: isolate;
 		min-height: 100dvh;
-	}
-
-	.projects-grid-bg {
-		position: fixed;
-		inset: 0;
-		z-index: 0;
-		background-image:
-			linear-gradient(var(--grid-line) 1px, transparent 1px),
-			linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
-		background-size: 56px 56px;
-		opacity: 0.9;
-		mask-image: radial-gradient(ellipse at center, black 38%, transparent 88%);
 	}
 
 	.projects-hero {
@@ -367,10 +397,16 @@
 			0 0 0 1px color-mix(in srgb, var(--theme) 18%, transparent),
 			0 0 28px color-mix(in srgb, var(--theme) 22%, transparent);
 		overflow: hidden;
+		cursor: pointer;
 		transition:
 			transform 0.35s ease,
 			box-shadow 0.35s ease,
 			border-color 0.35s ease;
+	}
+
+	.project-card:focus-visible {
+		outline: 2px solid color-mix(in srgb, var(--theme) 70%, transparent);
+		outline-offset: 3px;
 	}
 
 	.project-card:hover {
