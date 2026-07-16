@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
+	import { goto } from '$app/navigation';
 	import gsap from 'gsap';
 	import { Download, Rocket } from '@lucide/svelte';
 	import CvModal from './CvModal.svelte';
@@ -67,25 +68,36 @@ git push origin main`
 	let rightDone = $state(false);
 	let cvOpen = $state(false);
 
-	function pressInteractive(node: HTMLElement) {
+	function pressInteractive(node: HTMLElement): Promise<void> {
 		gsap.killTweensOf(node);
-		gsap
-			.timeline()
-			.to(node, { scale: 0.94, y: 2, duration: 0.12, ease: 'power2.in' })
-			.to(node, { scale: 1, y: 0, duration: 0.32, ease: 'power3.out' });
+		const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+		if (reduce) return Promise.resolve();
+
+		return new Promise((resolve) => {
+			gsap
+				.timeline({ onComplete: resolve })
+				.to(node, { scale: 0.94, y: 2, duration: 0.14, ease: 'power2.in' })
+				.to(node, { scale: 1, y: 0, duration: 0.36, ease: 'power3.out' });
+		});
 	}
 
-	function onCtaClick(e: MouseEvent & { currentTarget: HTMLElement }) {
-		pressInteractive(e.currentTarget);
+	async function onProjectsClick(e: MouseEvent & { currentTarget: HTMLAnchorElement }) {
+		e.preventDefault();
+		await pressInteractive(e.currentTarget);
+		await goto('/projects/');
 	}
 
-	function onDownloadCv(e: MouseEvent & { currentTarget: HTMLElement }) {
-		pressInteractive(e.currentTarget);
+	async function onDownloadCv(e: MouseEvent & { currentTarget: HTMLButtonElement }) {
+		e.preventDefault();
+		await pressInteractive(e.currentTarget);
 		cvOpen = true;
 	}
 
-	function onSocialClick(e: MouseEvent & { currentTarget: HTMLElement }) {
-		pressInteractive(e.currentTarget);
+	async function onSocialClick(e: MouseEvent & { currentTarget: HTMLAnchorElement }) {
+		e.preventDefault();
+		const href = e.currentTarget.href;
+		await pressInteractive(e.currentTarget);
+		window.open(href, '_blank', 'noopener,noreferrer');
 	}
 
 	async function typeSnippets(
@@ -266,7 +278,7 @@ git push origin main`
 					<a
 						href="/projects/"
 						class="hero-cta cta-solid interactive-press inline-flex items-center gap-2 rounded-lg px-5 py-2.5 text-xs font-bold tracking-[0.14em] uppercase sm:px-6 sm:py-3 sm:text-[13px]"
-						onclick={onCtaClick}
+						onclick={onProjectsClick}
 					>
 						PROJECTS
 						<Rocket class="h-4 w-4" strokeWidth={2.25} />
@@ -415,6 +427,8 @@ git push origin main`
 	.interactive-press {
 		transform: translateZ(0);
 		will-change: transform;
+		touch-action: manipulation;
+		-webkit-tap-highlight-color: transparent;
 	}
 
 	.social-orb {

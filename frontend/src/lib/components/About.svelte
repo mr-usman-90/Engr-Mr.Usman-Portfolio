@@ -8,9 +8,7 @@
 		Mail,
 		MapPin,
 		Phone,
-		Rocket,
-		User,
-		Users
+		User
 	} from '@lucide/svelte';
 
 	const detailsLeft = [
@@ -25,13 +23,6 @@
 		{ Icon: MapPin, label: 'Location', value: 'Multan, Pakistan' },
 		{ Icon: Briefcase, label: 'Freelance', value: 'Available' },
 		{ Icon: Languages, label: 'Languages', value: 'English, Urdu' }
-	] as const;
-
-	const stats = [
-		{ Icon: Rocket, value: '20+', label: 'Projects Completed' },
-		{ Icon: Briefcase, value: '3+', label: 'Years Experience' },
-		{ Icon: Code2, value: '10+', label: 'Technologies Mastered' },
-		{ Icon: Users, value: '15+', label: 'Happy Clients' }
 	] as const;
 
 	const education = [
@@ -265,18 +256,6 @@
 					</div>
 				</div>
 			</div>
-		</div>
-
-		<div class="stats-grid mt-12">
-			{#each stats as stat}
-				<article class="stat-card hover-lift">
-					<span class="stat-icon" aria-hidden="true">
-						<stat.Icon class="h-5 w-5" strokeWidth={1.75} />
-					</span>
-					<p class="stat-value">{stat.value}</p>
-					<p class="stat-label">{stat.label}</p>
-				</article>
-			{/each}
 		</div>
 
 		<div class="mt-10 grid gap-6 lg:grid-cols-2 lg:items-stretch">
@@ -552,11 +531,12 @@
 		text-underline-offset: 3px;
 	}
 
-	.stat-card,
 	.panel-card {
 		border: 1px solid var(--nav-border);
 		border-radius: 1.1rem;
 		background: color-mix(in srgb, var(--fg) 2.5%, var(--bg));
+		padding: 1.25rem 1.2rem 1.4rem;
+		height: 100%;
 		transition:
 			transform 0.35s ease,
 			border-color 0.35s ease,
@@ -564,77 +544,11 @@
 			background-color 0.35s ease;
 	}
 
-	.stats-grid {
-		display: grid;
-		grid-template-columns: repeat(2, minmax(0, 1fr));
-		gap: 0.75rem;
-	}
-
-	@media (min-width: 640px) {
-		.stats-grid {
-			gap: 1rem;
-		}
-	}
-
-	@media (min-width: 1024px) {
-		.stats-grid {
-			grid-template-columns: repeat(4, minmax(0, 1fr));
-		}
-	}
-
-	.stat-card {
-		padding: 1rem 0.75rem;
-		text-align: center;
-	}
-
-	@media (min-width: 640px) {
-		.stat-card {
-			padding: 1.25rem 1.1rem;
-		}
-	}
-
-	.panel-card {
-		padding: 1.25rem 1.2rem 1.4rem;
-		height: 100%;
-	}
-
 	.hover-lift:hover {
 		transform: translateY(-4px);
 		border-color: color-mix(in srgb, var(--fg) 28%, transparent);
 		box-shadow: 0 14px 36px color-mix(in srgb, var(--fg) 8%, transparent);
 		background: color-mix(in srgb, var(--fg) 4.5%, var(--bg));
-	}
-
-	.stat-icon {
-		display: inline-flex;
-		color: var(--fg);
-		margin-bottom: 0.65rem;
-	}
-
-	.stat-value {
-		font-size: 1.35rem;
-		font-weight: 800;
-		letter-spacing: -0.02em;
-	}
-
-	@media (min-width: 640px) {
-		.stat-value {
-			font-size: 1.55rem;
-		}
-	}
-
-	.stat-label {
-		margin-top: 0.2rem;
-		font-size: 0.72rem;
-		color: var(--muted);
-		font-weight: 500;
-		line-height: 1.3;
-	}
-
-	@media (min-width: 640px) {
-		.stat-label {
-			font-size: 0.82rem;
-		}
 	}
 
 	.panel-head {

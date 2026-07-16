@@ -13,9 +13,11 @@
 		{ label: 'Home', href: '/', enabled: true },
 		{ label: 'About', href: '/about/', enabled: true },
 		{ label: 'Projects', href: '/projects/', enabled: true },
-		{ label: 'Skills', enabled: false },
-		{ label: 'Experience', enabled: false },
-		{ label: 'Contact', enabled: false }
+		{ label: 'Skills', href: '/skills/', enabled: true },
+		{ label: 'Achievements', enabled: false },
+		{ label: 'Contact', enabled: false },
+		{ label: 'Blog', enabled: false },
+		{ label: 'Live Chat', enabled: false }
 	];
 
 	let open = $state(false);
@@ -31,6 +33,7 @@
 	const isHome = $derived(pathname === '/');
 	const isAbout = $derived(pathname.startsWith('/about'));
 	const isProjects = $derived(pathname.startsWith('/projects'));
+	const isSkills = $derived(pathname.startsWith('/skills'));
 
 	onMount(() => {
 		theme = getStoredTheme();
@@ -157,15 +160,15 @@
 	class:site-header-hidden={navHidden && !menuMounted}
 >
 	<nav
-		class="nav-shell pointer-events-auto flex w-full max-w-[980px] items-center justify-between gap-3 px-2 py-2 sm:px-2 sm:py-2.5"
+		class="nav-shell pointer-events-auto flex w-full max-w-[1180px] items-center justify-between gap-2 px-2 py-2 sm:gap-3 sm:px-2 sm:py-2.5 lg:grid lg:grid-cols-[1fr_auto_1fr]"
 		class:nav-shell-open={menuMounted}
 		aria-label="Primary"
 	>
-		<a href="/" class="signature-link shrink-0" aria-label="Mr. Usman — Home" onclick={goLink}>
+		<a href="/" class="signature-link shrink-0 lg:justify-self-start" aria-label="Mr. Usman — Home" onclick={goLink}>
 			<span class="signature" role="img" aria-hidden="true"></span>
 		</a>
 
-		<ul class="desktop-links hidden items-center gap-5 lg:flex xl:gap-6">
+		<ul class="desktop-links hidden items-center justify-center gap-3.5 lg:flex lg:justify-self-center xl:gap-5">
 			{#each links as link}
 				<li>
 					{#if link.enabled}
@@ -174,7 +177,8 @@
 							class="nav-link text-[12px] font-medium tracking-wide transition-colors"
 							class:active={(link.href === '/' && isHome) ||
 								(link.href.startsWith('/about') && isAbout) ||
-								(link.href.startsWith('/projects') && isProjects)}
+								(link.href.startsWith('/projects') && isProjects) ||
+								(link.href.startsWith('/skills') && isSkills)}
 							onclick={goLink}
 						>
 							{link.label}
@@ -186,7 +190,7 @@
 			{/each}
 		</ul>
 
-		<div class="flex items-center gap-2">
+		<div class="flex items-center gap-2 lg:justify-self-end">
 			<button
 				type="button"
 				class="theme-btn inline-flex h-10 w-10 items-center justify-center rounded-full border transition sm:h-9 sm:w-9"
@@ -251,7 +255,8 @@
 								class="mobile-link"
 								class:active={(link.href === '/' && isHome) ||
 									(link.href.startsWith('/about') && isAbout) ||
-									(link.href.startsWith('/projects') && isProjects)}
+									(link.href.startsWith('/projects') && isProjects) ||
+									(link.href.startsWith('/skills') && isSkills)}
 								onclick={goLink}
 							>
 								{link.label}

@@ -1,17 +1,26 @@
 <script lang="ts">
 	import {
 		ArrowUpRight,
+		Briefcase,
 		Code2,
 		Ellipsis,
 		ExternalLink,
 		Globe,
 		LayoutGrid,
 		Monitor,
-		Rocket
+		Rocket,
+		Users
 	} from '@lucide/svelte';
 	import GithubIcon from '$lib/components/icons/GithubIcon.svelte';
 	import SkeletonImage from '$lib/components/SkeletonImage.svelte';
 	import ProjectModal from '$lib/components/ProjectModal.svelte';
+
+	const stats = [
+		{ Icon: Rocket, value: '20+', label: 'Projects Completed' },
+		{ Icon: Briefcase, value: '3+', label: 'Years Experience' },
+		{ Icon: Code2, value: '10+', label: 'Technologies Mastered' },
+		{ Icon: Users, value: '15+', label: 'Happy Clients' }
+	] as const;
 
 	type Category = 'web' | 'desktop' | 'fullstack' | 'other';
 	type Filter = 'all' | Category;
@@ -168,6 +177,18 @@
 			</p>
 		</header>
 
+		<div class="stats-grid">
+			{#each stats as stat}
+				<article class="stat-card">
+					<span class="stat-icon" aria-hidden="true">
+						<stat.Icon class="h-5 w-5" strokeWidth={1.75} />
+					</span>
+					<p class="stat-value">{stat.value}</p>
+					<p class="stat-label">{stat.label}</p>
+				</article>
+			{/each}
+		</div>
+
 		<div class="filter-row" role="tablist" aria-label="Project filters">
 			{#each filters as filter}
 				<button
@@ -304,6 +325,85 @@
 		line-height: 1.65;
 		color: var(--muted);
 		font-weight: 500;
+	}
+
+	.stats-grid {
+		display: grid;
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+		gap: 0.75rem;
+		margin-top: 1.75rem;
+		max-width: 56rem;
+		margin-inline: auto;
+	}
+
+	@media (min-width: 640px) {
+		.stats-grid {
+			gap: 1rem;
+		}
+	}
+
+	@media (min-width: 1024px) {
+		.stats-grid {
+			grid-template-columns: repeat(4, minmax(0, 1fr));
+		}
+	}
+
+	.stat-card {
+		border: 1px solid var(--nav-border);
+		border-radius: 1.1rem;
+		background: color-mix(in srgb, var(--fg) 2.5%, var(--bg));
+		padding: 1rem 0.75rem;
+		text-align: center;
+		transition:
+			transform 0.35s ease,
+			border-color 0.35s ease,
+			box-shadow 0.35s ease,
+			background-color 0.35s ease;
+	}
+
+	@media (min-width: 640px) {
+		.stat-card {
+			padding: 1.25rem 1.1rem;
+		}
+	}
+
+	.stat-card:hover {
+		transform: translateY(-4px);
+		border-color: color-mix(in srgb, var(--fg) 28%, transparent);
+		box-shadow: 0 14px 36px color-mix(in srgb, var(--fg) 8%, transparent);
+		background: color-mix(in srgb, var(--fg) 4.5%, var(--bg));
+	}
+
+	.stat-icon {
+		display: inline-flex;
+		color: var(--fg);
+		margin-bottom: 0.65rem;
+	}
+
+	.stat-value {
+		font-size: 1.35rem;
+		font-weight: 800;
+		letter-spacing: -0.02em;
+	}
+
+	@media (min-width: 640px) {
+		.stat-value {
+			font-size: 1.55rem;
+		}
+	}
+
+	.stat-label {
+		margin-top: 0.2rem;
+		font-size: 0.72rem;
+		color: var(--muted);
+		font-weight: 500;
+		line-height: 1.3;
+	}
+
+	@media (min-width: 640px) {
+		.stat-label {
+			font-size: 0.82rem;
+		}
 	}
 
 	.filter-row {
@@ -619,11 +719,13 @@
 		.project-card,
 		.filter-btn,
 		.card-link,
-		.cta-btn {
+		.cta-btn,
+		.stat-card {
 			transition: none;
 		}
 
-		.project-card:hover {
+		.project-card:hover,
+		.stat-card:hover {
 			transform: none;
 		}
 	}

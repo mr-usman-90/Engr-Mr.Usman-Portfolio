@@ -22,7 +22,7 @@
 	--nav-border: rgba(255, 255, 255, 0.1);
 	--nav-link: #d4d4d8;
 	--panel: rgba(10, 10, 10, 0.95);
-	--grid-line: rgba(255, 255, 255, 0.055);
+	--grid-line: rgba(255, 255, 255, 0.1);
 	--code: rgba(255, 255, 255, 0.52);
 	--code-caret: rgba(255, 255, 255, 0.6);
 	--radial: rgba(255, 255, 255, 0.04);
@@ -48,7 +48,7 @@
 	--nav-border: rgba(0, 0, 0, 0.08);
 	--nav-link: #3f3f46;
 	--panel: rgba(255, 255, 255, 0.96);
-	--grid-line: rgba(0, 0, 0, 0.06);
+	--grid-line: rgba(0, 0, 0, 0.1);
 	--code: rgba(24, 24, 27, 0.42);
 	--code-caret: rgba(24, 24, 27, 0.55);
 	--radial: rgba(0, 0, 0, 0.03);
