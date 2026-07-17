@@ -14,7 +14,7 @@
 		{ label: 'About', href: '/about/', enabled: true },
 		{ label: 'Projects', href: '/projects/', enabled: true },
 		{ label: 'Skills', href: '/skills/', enabled: true },
-		{ label: 'Achievements', enabled: false },
+		{ label: 'Achievements', href: '/achievements/', enabled: true },
 		{ label: 'Contact', enabled: false },
 		{ label: 'Blog', enabled: false },
 		{ label: 'Live Chat', enabled: false }
@@ -34,6 +34,7 @@
 	const isAbout = $derived(pathname.startsWith('/about'));
 	const isProjects = $derived(pathname.startsWith('/projects'));
 	const isSkills = $derived(pathname.startsWith('/skills'));
+	const isAchievements = $derived(pathname.startsWith('/achievements'));
 
 	onMount(() => {
 		theme = getStoredTheme();
@@ -178,7 +179,8 @@
 							class:active={(link.href === '/' && isHome) ||
 								(link.href.startsWith('/about') && isAbout) ||
 								(link.href.startsWith('/projects') && isProjects) ||
-								(link.href.startsWith('/skills') && isSkills)}
+								(link.href.startsWith('/skills') && isSkills) ||
+								(link.href.startsWith('/achievements') && isAchievements)}
 							onclick={goLink}
 						>
 							{link.label}
@@ -256,7 +258,8 @@
 								class:active={(link.href === '/' && isHome) ||
 									(link.href.startsWith('/about') && isAbout) ||
 									(link.href.startsWith('/projects') && isProjects) ||
-									(link.href.startsWith('/skills') && isSkills)}
+									(link.href.startsWith('/skills') && isSkills) ||
+									(link.href.startsWith('/achievements') && isAchievements)}
 								onclick={goLink}
 							>
 								{link.label}

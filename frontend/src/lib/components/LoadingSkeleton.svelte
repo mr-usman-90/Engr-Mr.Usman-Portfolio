@@ -1,8 +1,10 @@
 <script lang="ts">
-	import { beforeNavigate, afterNavigate } from '$app/navigation';
+	import { afterNavigate, beforeNavigate } from '$app/navigation';
+	import { onMount } from 'svelte';
 
 	let visible = $state(false);
 	let timer: ReturnType<typeof setTimeout> | null = null;
+	let navToken = 0;
 
 	function isSlowConnection() {
 		const nav = navigator as Navigator & {
@@ -17,25 +19,49 @@
 		return false;
 	}
 
-	function clearTimer() {
+	function hide() {
+		navToken += 1;
 		if (timer) {
 			clearTimeout(timer);
 			timer = null;
 		}
+		visible = false;
 	}
 
-	beforeNavigate(() => {
-		clearTimer();
-		visible = false;
+	beforeNavigate(({ type, willUnload, complete }) => {
+		hide();
+
+		// Instant back/forward, and no overlay when leaving the document.
+		if (type === 'popstate' || willUnload) return;
+
+		const token = navToken;
 		const delay = isSlowConnection() ? 80 : 380;
+
 		timer = setTimeout(() => {
+			if (token !== navToken) return;
 			visible = true;
 		}, delay);
+
+		// Always clear when this navigation finishes or is aborted.
+		void complete.finally(() => {
+			if (token === navToken) hide();
+		});
 	});
 
 	afterNavigate(() => {
-		clearTimer();
-		visible = false;
+		hide();
+	});
+
+	onMount(() => {
+		hide();
+		window.addEventListener('pageshow', hide);
+		window.addEventListener('pagehide', hide);
+
+		return () => {
+			window.removeEventListener('pageshow', hide);
+			window.removeEventListener('pagehide', hide);
+			hide();
+		};
 	});
 </script>
 

@@ -8,8 +8,15 @@
 
 	let stageEl: HTMLDivElement | undefined = $state();
 
-	afterNavigate(() => {
+	afterNavigate(({ type }) => {
 		if (!stageEl) return;
+
+		// Instant restore for browser back/forward — no fade/slide delay.
+		if (type === 'popstate') {
+			gsap.set(stageEl, { clearProps: 'all' });
+			return;
+		}
+
 		const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 		if (reduce) {
 			gsap.set(stageEl, { clearProps: 'all' });

@@ -28,20 +28,20 @@
 	const education = [
 		{
 			year: '2024 - 2026',
-			title: "Engineer in Software's",
+			title: "Software's Engineer",
 			place: 'Software Engineering Track',
 			meta: 'Advanced software engineering practice & systems design'
 		},
 		{
 			year: '2023 - 2024',
 			title: 'Cloud Computing Certification',
-			place: 'Global Tech Institute (Demo)',
+			place: 'Global Tech Institute',
 			meta: 'Cloud architecture, deployment models, and managed services fundamentals'
 		},
 		{
 			year: '2022 - 2023',
 			title: 'Computer Networking Diploma',
-			place: 'Network Academy Multan (Demo)',
+			place: 'Network Academy Multan',
 			meta: 'LAN/WAN, TCP/IP, routing basics, and network security foundations'
 		},
 		{
@@ -80,7 +80,7 @@
 		{
 			year: '2023 - Present',
 			title: 'Networking Engineer (Part-time)',
-			place: 'Nexus Link Solutions (Demo)',
+			place: 'Nexus Link Solutions',
 			meta: 'Configured networks, troubleshooting connectivity, and supporting secure local/remote infrastructure.'
 		},
 		{
