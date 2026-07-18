@@ -4,6 +4,8 @@ import cors from '@fastify/cors';
 import helmet from '@fastify/helmet';
 import { ZodError } from 'zod';
 import { contactSchema } from './schemas/contact.js';
+import { chatRequestSchema } from './schemas/chat.js';
+import { generateChatReply } from './lib/chatAgent.js';
 
 const app = Fastify({
 	logger: true
@@ -11,7 +13,7 @@ const app = Fastify({
 
 await app.register(helmet);
 await app.register(cors, {
-	origin: ['http://localhost:5173', 'http://127.0.0.1:5173'],
+	origin: true,
 	methods: ['GET', 'POST', 'OPTIONS']
 });
 
@@ -46,6 +48,32 @@ app.post('/api/contact', async (request, reply) => {
 		return reply.code(500).send({
 			success: false,
 			message: 'Unable to save message. Ensure PostgreSQL is running and migrations are applied.'
+		});
+	}
+});
+
+app.post('/api/chat', async (request, reply) => {
+	try {
+		const body = chatRequestSchema.parse(request.body);
+		const { reply: content, provider } = await generateChatReply(body);
+
+		return reply.send({
+			success: true,
+			reply: content,
+			provider
+		});
+	} catch (error) {
+		if (error instanceof ZodError) {
+			return reply.code(400).send({
+				success: false,
+				errors: error.flatten()
+			});
+		}
+
+		request.log.error(error);
+		return reply.code(500).send({
+			success: false,
+			message: 'Unable to generate a reply right now. Please try again.'
 		});
 	}
 });

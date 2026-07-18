@@ -15,9 +15,9 @@
 		{ label: 'Projects', href: '/projects/', enabled: true },
 		{ label: 'Skills', href: '/skills/', enabled: true },
 		{ label: 'Achievements', href: '/achievements/', enabled: true },
-		{ label: 'Contact', enabled: false },
+		{ label: 'Contact', href: '/contact/', enabled: true },
 		{ label: 'Blog', enabled: false },
-		{ label: 'Live Chat', enabled: false }
+		{ label: 'Live Chat', href: '/chat/', enabled: true }
 	];
 
 	let open = $state(false);
@@ -35,6 +35,8 @@
 	const isProjects = $derived(pathname.startsWith('/projects'));
 	const isSkills = $derived(pathname.startsWith('/skills'));
 	const isAchievements = $derived(pathname.startsWith('/achievements'));
+	const isContact = $derived(pathname.startsWith('/contact'));
+	const isChat = $derived(pathname.startsWith('/chat'));
 
 	onMount(() => {
 		theme = getStoredTheme();
@@ -180,7 +182,9 @@
 								(link.href.startsWith('/about') && isAbout) ||
 								(link.href.startsWith('/projects') && isProjects) ||
 								(link.href.startsWith('/skills') && isSkills) ||
-								(link.href.startsWith('/achievements') && isAchievements)}
+								(link.href.startsWith('/achievements') && isAchievements) ||
+								(link.href.startsWith('/contact') && isContact) ||
+								(link.href.startsWith('/chat') && isChat)}
 							onclick={goLink}
 						>
 							{link.label}
@@ -206,12 +210,15 @@
 				{/if}
 			</button>
 
-			<span
+			<a
+				href="/contact/"
 				class="contact-btn hidden items-center gap-2 rounded-full border px-3.5 py-1.5 text-[11px] font-semibold tracking-wide lg:inline-flex"
+				class:active={isContact}
+				onclick={goLink}
 			>
 				<Mail class="h-3.5 w-3.5" strokeWidth={2} />
 				Contact Us
-			</span>
+			</a>
 
 			<button
 				type="button"
@@ -259,7 +266,9 @@
 									(link.href.startsWith('/about') && isAbout) ||
 									(link.href.startsWith('/projects') && isProjects) ||
 									(link.href.startsWith('/skills') && isSkills) ||
-									(link.href.startsWith('/achievements') && isAchievements)}
+									(link.href.startsWith('/achievements') && isAchievements) ||
+									(link.href.startsWith('/contact') && isContact) ||
+									(link.href.startsWith('/chat') && isChat)}
 								onclick={goLink}
 							>
 								{link.label}
@@ -386,6 +395,15 @@
 	.contact-btn {
 		border-color: color-mix(in srgb, var(--fg) 70%, transparent);
 		color: var(--fg);
+		text-decoration: none;
+		transition:
+			background-color 0.25s ease,
+			border-color 0.25s ease;
+	}
+
+	.contact-btn:hover,
+	.contact-btn.active {
+		background: color-mix(in srgb, var(--fg) 8%, transparent);
 	}
 
 	/* Burger: mobile only */

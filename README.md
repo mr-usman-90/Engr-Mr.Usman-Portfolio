@@ -78,6 +78,17 @@ npm run dev
 }
 ```
 
+- Live Chat: `POST http://localhost:3001/api/chat` (DB ki zarurat nahi)
+
+```json
+{
+  "message": "What are your top projects?",
+  "history": []
+}
+```
+
+Optional LLM (better Roman Urdu / Urdu): `backend/.env` mein `GROQ_API_KEY` set karein. Bina key ke local portfolio agent chalega.
+
 ### Quick start (dono saath)
 
 Terminal 1:
