@@ -106,7 +106,15 @@
 			gsap.fromTo(
 				panelEl,
 				{ opacity: 0, y: 28, scale: 0.96 },
-				{ opacity: 1, y: 0, scale: 1, duration: 0.42, ease: 'power3.out' }
+				{
+					opacity: 1,
+					y: 0,
+					scale: 1,
+					duration: 0.42,
+					ease: 'power3.out',
+					// Leave no residual transform — GPU layers from scale make images look soft/blurry
+					clearProps: 'transform'
+				}
 			);
 		}
 
@@ -160,7 +168,16 @@
 				<div bind:this={trackEl} class="pm-track">
 					{#each project.images as src, i}
 						<figure class="pm-slide">
-							<img src={src} alt={`${project.title} screenshot ${i + 1}`} loading={i === 0 ? 'eager' : 'lazy'} />
+							<img
+								src={src}
+								alt={`${project.title} screenshot ${i + 1}`}
+								width="1920"
+								height="1080"
+								loading={i === 0 ? 'eager' : 'lazy'}
+								decoding="async"
+								fetchpriority={i === 0 ? 'high' : 'auto'}
+								draggable="false"
+							/>
 						</figure>
 					{/each}
 				</div>
@@ -227,8 +244,8 @@
 
 	.pm-panel {
 		position: relative;
-		width: min(720px, 100%);
-		max-height: min(92dvh, 900px);
+		width: min(1100px, 100%);
+		max-height: min(94dvh, 980px);
 		overflow: auto;
 		border-radius: 1.25rem;
 		border: 1px solid color-mix(in srgb, var(--theme) 45%, transparent);
@@ -238,6 +255,8 @@
 			0 24px 64px color-mix(in srgb, #000 42%, transparent),
 			0 0 40px color-mix(in srgb, var(--theme) 18%, transparent);
 		padding: 1rem 1rem 1.15rem;
+		/* Avoid creating a persistent scaled compositing layer */
+		transform: none;
 	}
 
 	.pm-close {
@@ -266,27 +285,35 @@
 		overflow: hidden;
 		border-radius: 0.95rem;
 		border: 1px solid color-mix(in srgb, var(--fg) 10%, transparent);
-		aspect-ratio: 16 / 10;
-		background: color-mix(in srgb, var(--fg) 4%, transparent);
+		aspect-ratio: 16 / 9;
+		background: #0a0a0c;
 	}
 
 	.pm-track {
 		display: flex;
 		height: 100%;
-		will-change: transform;
 	}
 
 	.pm-slide {
 		margin: 0;
 		flex: 0 0 100%;
 		height: 100%;
+		display: grid;
+		place-items: center;
+		background: #0a0a0c;
 	}
 
 	.pm-slide img {
 		width: 100%;
 		height: 100%;
-		object-fit: cover;
+		object-fit: contain;
+		object-position: center;
 		display: block;
+		image-rendering: auto;
+		-webkit-user-drag: none;
+		/* Keep bitmap sharp; avoid GPU blur from parent filters/transforms */
+		transform: translateZ(0);
+		backface-visibility: hidden;
 	}
 
 	.pm-arrow {

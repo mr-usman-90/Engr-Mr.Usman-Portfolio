@@ -39,25 +39,6 @@
 		codeUrl: string;
 	};
 
-	const galleryPool = [
-		'/projects/school.jpg',
-		'/projects/pos.jpg',
-		'/projects/ecommerce.jpg',
-		'/projects/inventory.jpg',
-		'/projects/portfolio.jpg',
-		'/projects/tasks.jpg',
-		'/projects/school.jpg',
-		'/projects/ecommerce.jpg',
-		'/projects/pos.jpg',
-		'/projects/inventory.jpg'
-	] as const;
-
-	function withGallery(cover: string): string[] {
-		const rest = galleryPool.filter((src) => src !== cover);
-		const mixed = [cover, ...rest, ...galleryPool];
-		return mixed.slice(0, 10);
-	}
-
 	const filters: { id: Filter; label: string; Icon: typeof LayoutGrid }[] = [
 		{ id: 'all', label: 'All Projects', Icon: LayoutGrid },
 		{ id: 'web', label: 'Web Applications', Icon: Globe },
@@ -76,23 +57,45 @@
 			categoryLabel: 'Full Stack',
 			tech: ['React', 'Node.js', 'MongoDB', 'Tailwind'],
 			theme: '#a855f7',
-			image: '/projects/school.jpg',
-			images: withGallery('/projects/school.jpg'),
-			liveUrl: '#',
+			image: '/projects/School/01-school.webp',
+			images: [
+				'/projects/School/01-school.webp',
+				'/projects/School/02-school.webp',
+				'/projects/School/03-school.webp',
+				'/projects/School/04-school.webp',
+				'/projects/School/05-school.webp',
+				'/projects/School/06-school.webp',
+				'/projects/School/07-school.webp',
+				'/projects/School/08-school.webp',
+				'/projects/School/09-school.webp',
+				'/projects/School/10-school.webp'
+			],
+			liveUrl: 'https://school-management-system-live-demo.vercel.app/',
 			codeUrl: 'https://github.com/engr-mr-usman'
 		},
 		{
-			id: 'pos',
-			title: 'POS System for Retail Store',
+			id: 'blog',
+			title: 'Blog Website',
 			description:
-				'Retail POS with inventory control, live sales tracking, and a clear analytics dashboard.',
-			category: 'fullstack',
-			categoryLabel: 'Full Stack',
-			tech: ['React', 'Express.js', 'MongoDB', 'Socket.io'],
+				'Clean blog platform for publishing articles, browsing categories, and reading posts with a smooth modern UI.',
+			category: 'web',
+			categoryLabel: 'Web Application',
+			tech: ['HTML5', 'CSS3', 'JavaScript', 'Tailwind'],
 			theme: '#10b981',
-			image: '/projects/pos.jpg',
-			images: withGallery('/projects/pos.jpg'),
-			liveUrl: '#',
+			image: '/projects/Blog/01-Blog.webp',
+			images: [
+				'/projects/Blog/01-Blog.webp',
+				'/projects/Blog/02-Blog.webp',
+				'/projects/Blog/03-Blog.webp',
+				'/projects/Blog/04-Blog.webp',
+				'/projects/Blog/05-Blog.webp',
+				'/projects/Blog/06-Blog.webp',
+				'/projects/Blog/07-Blog.webp',
+				'/projects/Blog/08-Blog.webp',
+				'/projects/Blog/09-Blog.webp',
+				'/projects/Blog/10-Blog.webp'
+			],
+			liveUrl: 'https://blog-website-alpha-inky.vercel.app/',
 			codeUrl: 'https://github.com/engr-mr-usman'
 		},
 		{
@@ -105,7 +108,18 @@
 			tech: ['Next.js', 'Tailwind', 'Stripe', 'MongoDB'],
 			theme: '#3b82f6',
 			image: '/projects/ecommerce.jpg',
-			images: withGallery('/projects/ecommerce.jpg'),
+			images: [
+				'/projects/ecommerce-1.jpg',
+				'/projects/ecommerce-2.jpg',
+				'/projects/ecommerce-3.jpg',
+				'/projects/ecommerce-4.jpg',
+				'/projects/ecommerce-5.jpg',
+				'/projects/ecommerce-6.jpg',
+				'/projects/ecommerce-7.jpg',
+				'/projects/ecommerce-8.jpg',
+				'/projects/ecommerce-9.jpg',
+				'/projects/ecommerce-10.jpg'
+			],
 			liveUrl: '#',
 			codeUrl: 'https://github.com/engr-mr-usman'
 		},
@@ -119,7 +133,18 @@
 			tech: ['Electron', 'SQLite', 'JavaScript'],
 			theme: '#f59e0b',
 			image: '/projects/inventory.jpg',
-			images: withGallery('/projects/inventory.jpg'),
+			images: [
+				'/projects/inventory-1.jpg',
+				'/projects/inventory-2.jpg',
+				'/projects/inventory-3.jpg',
+				'/projects/inventory-4.jpg',
+				'/projects/inventory-5.jpg',
+				'/projects/inventory-6.jpg',
+				'/projects/inventory-7.jpg',
+				'/projects/inventory-8.jpg',
+				'/projects/inventory-9.jpg',
+				'/projects/inventory-10.jpg'
+			],
 			liveUrl: '#',
 			codeUrl: 'https://github.com/engr-mr-usman'
 		},
@@ -133,7 +158,18 @@
 			tech: ['HTML', 'CSS', 'JavaScript', 'GSAP'],
 			theme: '#8b5cf6',
 			image: '/projects/portfolio.jpg',
-			images: withGallery('/projects/portfolio.jpg'),
+			images: [
+				'/projects/portfolio-1.jpg',
+				'/projects/portfolio-2.jpg',
+				'/projects/portfolio-3.jpg',
+				'/projects/portfolio-4.jpg',
+				'/projects/portfolio-5.jpg',
+				'/projects/portfolio-6.jpg',
+				'/projects/portfolio-7.jpg',
+				'/projects/portfolio-8.jpg',
+				'/projects/portfolio-9.jpg',
+				'/projects/portfolio-10.jpg'
+			],
 			liveUrl: '/',
 			codeUrl: 'https://github.com/engr-mr-usman'
 		},
@@ -146,8 +182,19 @@
 			categoryLabel: 'Web Application',
 			tech: ['React', 'Firebase', 'Tailwind', 'Framer Motion'],
 			theme: '#06b6d4',
-			image: '/projects/tasks.jpg',
-			images: withGallery('/projects/tasks.jpg'),
+			image: '/projects/school.jpg',
+			images: [
+				'/projects/school.jpg',
+				'/projects/tasks-2.jpg',
+				'/projects/tasks-3.jpg',
+				'/projects/tasks-4.jpg',
+				'/projects/tasks-5.jpg',
+				'/projects/tasks-6.jpg',
+				'/projects/tasks-7.jpg',
+				'/projects/tasks-8.jpg',
+				'/projects/tasks-9.jpg',
+				'/projects/tasks-10.jpg'
+			],
 			liveUrl: '#',
 			codeUrl: 'https://github.com/engr-mr-usman'
 		}
