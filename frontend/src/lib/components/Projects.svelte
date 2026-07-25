@@ -22,7 +22,7 @@
 		{ Icon: Users, value: '15+', label: 'Happy Clients' }
 	] as const;
 
-	type Category = 'web' | 'desktop' | 'fullstack' | 'other';
+	type Category = 'web' | 'www' | 'fullstack' | 'other';
 	type Filter = 'all' | Category;
 
 	type Project = {
@@ -42,12 +42,37 @@
 	const filters: { id: Filter; label: string; Icon: typeof LayoutGrid }[] = [
 		{ id: 'all', label: 'All Projects', Icon: LayoutGrid },
 		{ id: 'web', label: 'Web Applications', Icon: Globe },
-		{ id: 'desktop', label: 'Desktop Applications', Icon: Monitor },
+		{ id: 'www', label: 'World Wide Web', Icon: Monitor },
 		{ id: 'fullstack', label: 'Full Stack', Icon: Code2 },
 		{ id: 'other', label: 'Other', Icon: Ellipsis }
 	];
 
 	const projects: Project[] = [
+		{
+			id: 'prime-softnox',
+			title: 'Smarter Software - Better Tomorrow',
+			description:
+				'Prime Softnox Solutions is a registered software company delivering modern SaaS, POS, ERP, and Custom Software solutions using the latest technologies. We provide flexible, scalable, user-friendly, and fully maintained software to help businesses',
+			category: 'www',
+			categoryLabel: 'World Wide Web',
+			tech: ['HTML5', 'CSS3', 'JavaScript', 'Tailwind', 'GSAP'],
+			theme: '#f59e0b',
+			image: '/projects/P.S.N.S/01-p.s.n.s.webp',
+			images: [
+				'/projects/P.S.N.S/01-p.s.n.s.webp',
+				'/projects/P.S.N.S/02-p.s.n.s.webp',
+				'/projects/P.S.N.S/03-p.s.n.s.webp',
+				'/projects/P.S.N.S/04-p.s.n.s.webp',
+				'/projects/P.S.N.S/05-p.s.n.s.webp',
+				'/projects/P.S.N.S/06-p.s.n.s.webp',
+				'/projects/P.S.N.S/07-p.s.n.s.webp',
+				'/projects/P.S.N.S/08-p.s.n.s.webp',
+				'/projects/P.S.N.S/09-p.s.n.s.webp',
+				'/projects/P.S.N.S/10-p.s.n.s.webp'
+			],
+			liveUrl: 'https://primesoftnoxsolutions-2.vercel.app/',
+			codeUrl: 'https://github.com/engr-mr-usman'
+		},
 		{
 			id: 'school',
 			title: 'School Management System',
@@ -99,51 +124,26 @@
 			codeUrl: 'https://github.com/engr-mr-usman'
 		},
 		{
-			id: 'ecommerce',
-			title: 'E-Commerce Website',
-			description:
-				'Modern storefront with product catalog, shopping cart, and secure Stripe checkout.',
-			category: 'web',
-			categoryLabel: 'Web Application',
-			tech: ['Next.js', 'Tailwind', 'Stripe', 'MongoDB'],
-			theme: '#3b82f6',
-			image: '/projects/ecommerce.jpg',
-			images: [
-				'/projects/ecommerce-1.jpg',
-				'/projects/ecommerce-2.jpg',
-				'/projects/ecommerce-3.jpg',
-				'/projects/ecommerce-4.jpg',
-				'/projects/ecommerce-5.jpg',
-				'/projects/ecommerce-6.jpg',
-				'/projects/ecommerce-7.jpg',
-				'/projects/ecommerce-8.jpg',
-				'/projects/ecommerce-9.jpg',
-				'/projects/ecommerce-10.jpg'
-			],
-			liveUrl: '#',
-			codeUrl: 'https://github.com/engr-mr-usman'
-		},
-		{
-			id: 'inventory',
+			id: 'inventory-management',
 			title: 'Inventory Management App',
 			description:
-				'Desktop inventory app for stock levels, product tracking, and printable reports.',
-			category: 'desktop',
-			categoryLabel: 'Desktop Application',
-			tech: ['Electron', 'SQLite', 'JavaScript'],
-			theme: '#f59e0b',
-			image: '/projects/inventory.jpg',
+				'Full stack inventory system for stock tracking, product records, and live reports in one dashboard.',
+			category: 'fullstack',
+			categoryLabel: 'Full Stack',
+			tech: ['Next.js', 'Tailwind', 'Stripe', 'MongoDB'],
+			theme: '#3b82f6',
+			image: '/projects/Bricks-Manufcturing/01-BM.webp',
 			images: [
-				'/projects/inventory-1.jpg',
-				'/projects/inventory-2.jpg',
-				'/projects/inventory-3.jpg',
-				'/projects/inventory-4.jpg',
-				'/projects/inventory-5.jpg',
-				'/projects/inventory-6.jpg',
-				'/projects/inventory-7.jpg',
-				'/projects/inventory-8.jpg',
-				'/projects/inventory-9.jpg',
-				'/projects/inventory-10.jpg'
+				'/projects/Bricks-Manufcturing/01-BM.webp',
+				'/projects/Bricks-Manufcturing/02-BM.webp',
+				'/projects/Bricks-Manufcturing/03-BM.webp',
+				'/projects/Bricks-Manufcturing/04-BM.webp',
+				'/projects/Bricks-Manufcturing/05-BM.webp',
+				'/projects/Bricks-Manufcturing/06-BM.webp',
+				'/projects/Bricks-Manufcturing/07-BM.webp',
+				'/projects/Bricks-Manufcturing/08-BM.webp',
+				'/projects/Bricks-Manufcturing/09-BM.webp',
+				'/projects/Bricks-Manufcturing/10-BM.webp'
 			],
 			liveUrl: '#',
 			codeUrl: 'https://github.com/engr-mr-usman'
@@ -157,20 +157,20 @@
 			categoryLabel: 'Web Application',
 			tech: ['HTML', 'CSS', 'JavaScript', 'GSAP'],
 			theme: '#8b5cf6',
-			image: '/projects/portfolio.jpg',
+			image: '/projects/Portfolio-website/01-PFW.webp',
 			images: [
-				'/projects/portfolio-1.jpg',
-				'/projects/portfolio-2.jpg',
-				'/projects/portfolio-3.jpg',
-				'/projects/portfolio-4.jpg',
-				'/projects/portfolio-5.jpg',
-				'/projects/portfolio-6.jpg',
-				'/projects/portfolio-7.jpg',
-				'/projects/portfolio-8.jpg',
-				'/projects/portfolio-9.jpg',
-				'/projects/portfolio-10.jpg'
+				'/projects/Portfolio-website/01-PFW.webp',
+				'/projects/Portfolio-website/02-PFW.webp',
+				'/projects/Portfolio-website/03-PFW.webp',
+				'/projects/Portfolio-website/04-PFW.webp',
+				'/projects/Portfolio-website/05-PFW.webp',
+				'/projects/Portfolio-website/06-PFW.webp',
+				'/projects/Portfolio-website/07-PFW.webp',
+				'/projects/Portfolio-website/08-PFW.webp',
+				'/projects/Portfolio-website/09-PFW.webp',
+				'/projects/Portfolio-website/10-PFW.webp'
 			],
-			liveUrl: '/',
+			liveUrl: 'https://mr-usman-90.github.io/GFX-Mr.Usman-Portfolio/',
 			codeUrl: 'https://github.com/engr-mr-usman'
 		},
 		{
@@ -182,18 +182,18 @@
 			categoryLabel: 'Web Application',
 			tech: ['React', 'Firebase', 'Tailwind', 'Framer Motion'],
 			theme: '#06b6d4',
-			image: '/projects/school.jpg',
+			image: '/projects/TMA/00.webp',
 			images: [
-				'/projects/school.jpg',
-				'/projects/tasks-2.jpg',
-				'/projects/tasks-3.jpg',
-				'/projects/tasks-4.jpg',
-				'/projects/tasks-5.jpg',
-				'/projects/tasks-6.jpg',
-				'/projects/tasks-7.jpg',
-				'/projects/tasks-8.jpg',
-				'/projects/tasks-9.jpg',
-				'/projects/tasks-10.jpg'
+				'/projects/TMA/00.webp',
+				'/projects/TMA/00.webp',
+				'/projects/TMA/00.webp',
+				'/projects/TMA/00.webp',
+				'/projects/TMA/00.webp',
+				'/projects/TMA/00.webp',
+				'/projects/TMA/00.webp',
+				'/projects/TMA/00.webp',
+				'/projects/TMA/00.webp',
+				'/projects/TMA/00.webp'
 			],
 			liveUrl: '#',
 			codeUrl: 'https://github.com/engr-mr-usman'
