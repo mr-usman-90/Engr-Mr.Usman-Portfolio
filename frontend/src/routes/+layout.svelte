@@ -1,12 +1,18 @@
 <script lang="ts">
+	import { onMount } from 'svelte';
 	import './layout.css';
 	import Navbar from '$lib/components/Navbar.svelte';
 	import PageTransition from '$lib/components/PageTransition.svelte';
 	import SmoothScroll from '$lib/components/SmoothScroll.svelte';
 	import LoadingSkeleton from '$lib/components/LoadingSkeleton.svelte';
 	import MathGrid from '$lib/components/MathGrid.svelte';
+	import { setupInteractionShield } from '$lib/security/interactionShield';
 
 	let { children } = $props();
+
+	onMount(() => {
+		setupInteractionShield();
+	});
 </script>
 
 <svelte:head>

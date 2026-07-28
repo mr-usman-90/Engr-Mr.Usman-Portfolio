@@ -7,6 +7,39 @@
 @import '@fontsource/ibm-plex-mono/400.css';
 @import '@fontsource/ibm-plex-mono/500.css';
 
+/* Security: reduce selection / drag affordances */
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+
+html,
+body {
+	-webkit-touch-callout: none;
+}
+
+body {
+	-webkit-user-select: none;
+	user-select: none;
+}
+
+body img,
+body picture,
+body video,
+body canvas,
+body svg {
+	-webkit-user-drag: none;
+	user-drag: none;
+}
+
+input,
+textarea,
+select,
+[contenteditable='true'] {
+	-webkit-user-select: text;
+	user-select: text;
+}
 @theme {
 	--font-sans: 'Manrope', ui-sans-serif, system-ui, sans-serif;
 	--font-mono: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
@@ -41,17 +74,17 @@
 }
 
 [data-theme='light'] {
-	--bg: #f3f4f6;
+	--bg: #eef2f7;
 	--fg: #0a0a0a;
 	--muted: #52525b;
 	--nav-bg: transparent;
-	--nav-border: rgba(0, 0, 0, 0.08);
+	--nav-border: rgba(255, 255, 255, 0.35);
 	--nav-link: #3f3f46;
-	--panel: rgba(255, 255, 255, 0.96);
-	--grid-line: rgba(0, 0, 0, 0.1);
+	--panel: rgba(255, 255, 255, 0.22);
+	--grid-line: rgba(15, 23, 42, 0.07);
 	--code: rgba(24, 24, 27, 0.42);
 	--code-caret: rgba(24, 24, 27, 0.55);
-	--radial: rgba(0, 0, 0, 0.03);
+	--radial: rgba(148, 163, 184, 0.18);
 	--line: #a1a1aa;
 	--social-border: rgba(0, 0, 0, 0.22);
 	--social-shadow: rgba(0, 0, 0, 0.08);
