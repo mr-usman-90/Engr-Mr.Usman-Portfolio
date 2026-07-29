@@ -78,9 +78,9 @@ select,
 	--fg: #0a0a0a;
 	--muted: #52525b;
 	--nav-bg: transparent;
-	--nav-border: rgba(255, 255, 255, 0.35);
+	--nav-border: rgba(255, 255, 255, 0.65);
 	--nav-link: #3f3f46;
-	--panel: rgba(255, 255, 255, 0.22);
+	--panel: rgba(255, 255, 255, 0.78);
 	--grid-line: rgba(15, 23, 42, 0.07);
 	--code: rgba(24, 24, 27, 0.42);
 	--code-caret: rgba(24, 24, 27, 0.55);

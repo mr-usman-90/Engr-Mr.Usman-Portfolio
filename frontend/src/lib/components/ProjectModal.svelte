@@ -260,29 +260,29 @@
 	}
 
 	:global(html[data-theme="light"]) .pm-panel {
-		background: rgba(255, 255, 255, 0.2);
-		border: 1px solid rgba(255, 255, 255, 0.45);
+		background: rgba(255, 255, 255, 0.78);
+		border: 1px solid rgba(255, 255, 255, 0.9);
 		backdrop-filter: blur(28px) saturate(1.5);
 		-webkit-backdrop-filter: blur(28px) saturate(1.5);
 		box-shadow:
 			0 0 0 1px color-mix(in srgb, var(--theme) 12%, transparent),
-			0 24px 64px rgba(15, 23, 42, 0.08),
+			0 24px 64px rgba(15, 23, 42, 0.1),
 			0 0 36px color-mix(in srgb, var(--theme) 10%, transparent),
-			inset 0 1px 0 rgba(255, 255, 255, 0.6);
+			inset 0 1px 0 rgba(255, 255, 255, 0.95);
 	}
 
 	:global(html[data-theme="light"]) .pm-overlay {
-		background: color-mix(in srgb, #e2e8f0 28%, transparent);
+		background: color-mix(in srgb, #94a3b8 35%, transparent);
 		backdrop-filter: blur(14px) saturate(1.25);
 		-webkit-backdrop-filter: blur(14px) saturate(1.25);
 	}
 
 	:global(html[data-theme="light"]) .pm-close {
-		background: rgba(255, 255, 255, 0.22);
-		border-color: rgba(255, 255, 255, 0.45);
+		background: rgba(255, 255, 255, 0.72);
+		border-color: rgba(255, 255, 255, 0.88);
 		backdrop-filter: blur(14px);
 		-webkit-backdrop-filter: blur(14px);
-		box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.55);
+		box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.9);
 	}
 
 	.pm-close {

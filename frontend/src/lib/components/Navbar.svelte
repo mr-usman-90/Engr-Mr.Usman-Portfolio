@@ -312,35 +312,35 @@
 
 	@media (max-width: 1023px) {
 		.nav-shell {
-			border: 1px solid color-mix(in srgb, var(--fg) 12%, transparent);
+			border: 1px solid color-mix(in srgb, var(--fg) 14%, transparent);
 			border-radius: 1.15rem;
 			padding-inline: 0.75rem;
-			background: color-mix(in srgb, var(--bg) 38%, transparent);
-			backdrop-filter: blur(18px) saturate(1.35);
-			-webkit-backdrop-filter: blur(18px) saturate(1.35);
+			background: color-mix(in srgb, var(--bg) 78%, transparent);
+			backdrop-filter: blur(22px) saturate(1.4);
+			-webkit-backdrop-filter: blur(22px) saturate(1.4);
 			box-shadow:
-				0 10px 36px color-mix(in srgb, #000 14%, transparent),
-				inset 0 1px 0 color-mix(in srgb, var(--fg) 8%, transparent);
+				0 10px 36px color-mix(in srgb, #000 18%, transparent),
+				inset 0 1px 0 color-mix(in srgb, var(--fg) 10%, transparent);
 		}
 
 		:global(html[data-theme='light']) .nav-shell {
-			background: rgba(255, 255, 255, 0.14);
-			border: 1px solid rgba(255, 255, 255, 0.4);
-			backdrop-filter: blur(22px) saturate(1.45);
-			-webkit-backdrop-filter: blur(22px) saturate(1.45);
+			background: rgba(255, 255, 255, 0.72);
+			border: 1px solid rgba(255, 255, 255, 0.85);
+			backdrop-filter: blur(24px) saturate(1.45);
+			-webkit-backdrop-filter: blur(24px) saturate(1.45);
 			box-shadow:
-				0 10px 36px rgba(15, 23, 42, 0.04),
-				inset 0 1px 0 rgba(255, 255, 255, 0.55);
+				0 10px 36px rgba(15, 23, 42, 0.08),
+				inset 0 1px 0 rgba(255, 255, 255, 0.9);
 		}
 
 		.nav-shell-open {
-			border-color: color-mix(in srgb, var(--fg) 16%, transparent);
-			background: color-mix(in srgb, var(--bg) 48%, transparent);
+			border-color: color-mix(in srgb, var(--fg) 18%, transparent);
+			background: color-mix(in srgb, var(--bg) 86%, transparent);
 		}
 
 		:global(html[data-theme='light']) .nav-shell-open {
-			background: rgba(255, 255, 255, 0.22);
-			border-color: rgba(255, 255, 255, 0.5);
+			background: rgba(255, 255, 255, 0.82);
+			border-color: rgba(255, 255, 255, 0.92);
 		}
 
 		.signature-link {
@@ -494,9 +494,9 @@
 		align-items: flex-start;
 		justify-content: flex-end;
 		padding: 4.65rem 0.85rem 1rem;
-		background: color-mix(in srgb, #000 18%, transparent);
-		backdrop-filter: blur(6px);
-		-webkit-backdrop-filter: blur(6px);
+		background: color-mix(in srgb, #000 32%, transparent);
+		backdrop-filter: blur(10px);
+		-webkit-backdrop-filter: blur(10px);
 	}
 
 	@media (min-width: 1024px) {
@@ -511,26 +511,26 @@
 		height: auto;
 		padding: 0.45rem;
 		border-radius: 1rem;
-		border: 1px solid color-mix(in srgb, var(--fg) 14%, transparent);
-		background: color-mix(in srgb, var(--bg) 42%, transparent);
-		backdrop-filter: blur(20px) saturate(1.4);
-		-webkit-backdrop-filter: blur(20px) saturate(1.4);
+		border: 1px solid color-mix(in srgb, var(--fg) 16%, transparent);
+		background: color-mix(in srgb, var(--bg) 82%, transparent);
+		backdrop-filter: blur(24px) saturate(1.45);
+		-webkit-backdrop-filter: blur(24px) saturate(1.45);
 		box-shadow:
-			0 16px 40px color-mix(in srgb, #000 22%, transparent),
-			inset 0 1px 0 color-mix(in srgb, var(--fg) 10%, transparent);
+			0 16px 40px color-mix(in srgb, #000 28%, transparent),
+			inset 0 1px 0 color-mix(in srgb, var(--fg) 12%, transparent);
 		overflow: hidden;
 	}
 
 	:global(html[data-theme='light']) .mobile-overlay {
-		background: color-mix(in srgb, #e2e8f0 18%, transparent);
+		background: color-mix(in srgb, #94a3b8 28%, transparent);
 	}
 
 	:global(html[data-theme='light']) .mobile-panel {
-		background: rgba(255, 255, 255, 0.16);
-		border: 1px solid rgba(255, 255, 255, 0.42);
+		background: rgba(255, 255, 255, 0.78);
+		border: 1px solid rgba(255, 255, 255, 0.9);
 		box-shadow:
-			0 16px 40px rgba(15, 23, 42, 0.06),
-			inset 0 1px 0 rgba(255, 255, 255, 0.55);
+			0 16px 40px rgba(15, 23, 42, 0.1),
+			inset 0 1px 0 rgba(255, 255, 255, 0.95);
 	}
 
 	.mobile-list {

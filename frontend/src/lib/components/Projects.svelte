@@ -599,21 +599,21 @@
 	}
 
 	:global(html[data-theme="light"]) .stat-card {
-		background: rgba(255, 255, 255, 0.16);
-		border: 1px solid rgba(255, 255, 255, 0.42);
+		background: rgba(255, 255, 255, 0.62);
+		border: 1px solid rgba(255, 255, 255, 0.82);
 		backdrop-filter: blur(22px) saturate(1.45);
 		-webkit-backdrop-filter: blur(22px) saturate(1.45);
 		box-shadow:
-			0 8px 28px rgba(15, 23, 42, 0.04),
-			inset 0 1px 0 rgba(255, 255, 255, 0.55);
+			0 8px 28px rgba(15, 23, 42, 0.06),
+			inset 0 1px 0 rgba(255, 255, 255, 0.9);
 	}
 
 	:global(html[data-theme="light"]) .stat-card:hover {
-		background: rgba(255, 255, 255, 0.28);
-		border-color: rgba(255, 255, 255, 0.58);
+		background: rgba(255, 255, 255, 0.78);
+		border-color: rgba(255, 255, 255, 0.95);
 		box-shadow:
-			0 14px 36px rgba(15, 23, 42, 0.06),
-			inset 0 1px 0 rgba(255, 255, 255, 0.7);
+			0 14px 36px rgba(15, 23, 42, 0.08),
+			inset 0 1px 0 rgba(255, 255, 255, 0.95);
 	}
 
 	.stat-icon {
@@ -702,24 +702,24 @@
 	}
 
 	:global(html[data-theme="light"]) .filter-btn {
-		background: rgba(255, 255, 255, 0.18);
-		border: 1px solid rgba(255, 255, 255, 0.4);
+		background: rgba(255, 255, 255, 0.62);
+		border: 1px solid rgba(255, 255, 255, 0.8);
 		backdrop-filter: blur(18px) saturate(1.4);
 		-webkit-backdrop-filter: blur(18px) saturate(1.4);
 		box-shadow:
-			0 4px 16px rgba(15, 23, 42, 0.03),
-			inset 0 1px 0 rgba(255, 255, 255, 0.5);
+			0 4px 16px rgba(15, 23, 42, 0.05),
+			inset 0 1px 0 rgba(255, 255, 255, 0.85);
 	}
 
 	:global(html[data-theme="light"]) .filter-btn:hover {
-		background: rgba(255, 255, 255, 0.32);
-		border-color: rgba(255, 255, 255, 0.55);
+		background: rgba(255, 255, 255, 0.78);
+		border-color: rgba(255, 255, 255, 0.95);
 	}
 
 	:global(html[data-theme="light"]) .filter-btn.active {
-		background: rgba(10, 10, 10, 0.72);
+		background: rgba(10, 10, 10, 0.88);
 		color: #fff;
-		border-color: rgba(10, 10, 10, 0.8);
+		border-color: rgba(10, 10, 10, 0.92);
 		backdrop-filter: blur(16px);
 		-webkit-backdrop-filter: blur(16px);
 		box-shadow: 0 0 18px color-mix(in srgb, #0a0a0a 14%, transparent);
@@ -776,36 +776,36 @@
 	}
 
 	:global(html[data-theme="light"]) .project-card {
-		background: rgba(255, 255, 255, 0.14);
-		border: 1px solid rgba(255, 255, 255, 0.4);
+		background: rgba(255, 255, 255, 0.66);
+		border: 1px solid rgba(255, 255, 255, 0.85);
 		backdrop-filter: blur(24px) saturate(1.5);
 		-webkit-backdrop-filter: blur(24px) saturate(1.5);
 		box-shadow:
-			0 0 0 1px color-mix(in srgb, var(--theme) 14%, transparent),
-			0 12px 40px rgba(15, 23, 42, 0.04),
+			0 0 0 1px color-mix(in srgb, var(--theme) 16%, transparent),
+			0 12px 40px rgba(15, 23, 42, 0.07),
 			0 0 24px color-mix(in srgb, var(--theme) 10%, transparent),
-			inset 0 1px 0 rgba(255, 255, 255, 0.55);
+			inset 0 1px 0 rgba(255, 255, 255, 0.9);
 	}
 
 	:global(html[data-theme="light"]) .project-card:hover {
-		background: rgba(255, 255, 255, 0.26);
-		border-color: rgba(255, 255, 255, 0.58);
+		background: rgba(255, 255, 255, 0.82);
+		border-color: rgba(255, 255, 255, 0.95);
 		box-shadow:
-			0 0 0 1px color-mix(in srgb, var(--theme) 26%, transparent),
-			0 18px 48px rgba(15, 23, 42, 0.07),
+			0 0 0 1px color-mix(in srgb, var(--theme) 28%, transparent),
+			0 18px 48px rgba(15, 23, 42, 0.1),
 			0 0 32px color-mix(in srgb, var(--theme) 14%, transparent),
-			inset 0 1px 0 rgba(255, 255, 255, 0.7);
+			inset 0 1px 0 rgba(255, 255, 255, 0.95);
 	}
 
 	:global(html[data-theme="light"]) .preview {
-		border-color: rgba(255, 255, 255, 0.35);
-		background: color-mix(in srgb, var(--theme) 6%, rgba(255, 255, 255, 0.28));
-		box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.22);
+		border-color: rgba(255, 255, 255, 0.55);
+		background: color-mix(in srgb, var(--theme) 6%, rgba(255, 255, 255, 0.55));
+		box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.35);
 	}
 
 	:global(html[data-theme="light"]) .tech-tags li {
-		background: rgba(255, 255, 255, 0.18);
-		border: 1px solid rgba(255, 255, 255, 0.4);
+		background: rgba(255, 255, 255, 0.7);
+		border: 1px solid rgba(255, 255, 255, 0.85);
 		backdrop-filter: blur(12px);
 		-webkit-backdrop-filter: blur(12px);
 		color: color-mix(in srgb, var(--muted) 55%, var(--fg));
@@ -944,25 +944,25 @@
 	}
 
 	:global(html[data-theme="light"]) .cta-bar {
-		background: rgba(255, 255, 255, 0.16);
-		border: 1px solid rgba(255, 255, 255, 0.4);
+		background: rgba(255, 255, 255, 0.66);
+		border: 1px solid rgba(255, 255, 255, 0.85);
 		backdrop-filter: blur(22px) saturate(1.45);
 		-webkit-backdrop-filter: blur(22px) saturate(1.45);
 		box-shadow:
-			0 10px 36px rgba(15, 23, 42, 0.04),
-			inset 0 1px 0 rgba(255, 255, 255, 0.55);
+			0 10px 36px rgba(15, 23, 42, 0.06),
+			inset 0 1px 0 rgba(255, 255, 255, 0.9);
 	}
 
 	:global(html[data-theme="light"]) .cta-btn {
-		background: rgba(255, 255, 255, 0.2);
-		border-color: rgba(255, 255, 255, 0.45);
+		background: rgba(255, 255, 255, 0.72);
+		border-color: rgba(255, 255, 255, 0.88);
 		backdrop-filter: blur(14px);
 		-webkit-backdrop-filter: blur(14px);
-		box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.5);
+		box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.9);
 	}
 
 	:global(html[data-theme="light"]) .cta-btn:hover {
-		background: rgba(255, 255, 255, 0.34);
+		background: rgba(255, 255, 255, 0.9);
 		border-color: color-mix(in srgb, var(--fg) 28%, transparent);
 	}
 
