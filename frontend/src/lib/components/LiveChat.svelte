@@ -11,7 +11,7 @@
 	};
 
 	const suggestions = [
-		'What tools do you use?',
+		'What pages are on your website?',
 		'Tell me about your certifications',
 		"What's your tech stack?",
 		'What are your top projects?',

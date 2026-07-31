@@ -11,11 +11,11 @@
 		GraduationCap,
 		LayoutGrid,
 		Network,
-		Search,
 		TrendingUp,
 		Trophy,
 		X
 	} from '@lucide/svelte';
+	import SkeletonImage from '$lib/components/SkeletonImage.svelte';
 
 	type Category = 'web' | 'cloud' | 'networking' | 'marketing' | 'other';
 	type Filter = 'all' | Category;
@@ -30,7 +30,7 @@
 		date: string;
 		tags: string[];
 		accent: string;
-		art: 'seo' | 'aws' | 'cisco' | 'meta';
+		image: string;
 		verifyUrl: string;
 	};
 
@@ -52,58 +52,156 @@
 			categoryLabel: 'SEO & Marketing',
 			description:
 				'Completed comprehensive training on Search Engine Optimization including on-page SEO, off-page SEO, keyword research, and analytics.',
-			date: 'Nov 17, 2025',
-			tags: ['DigiSkills.pk', 'DSTP3.0-Batch-01'],
+			date: 'Dec 17, 2026',
+			tags: ['DigiSkills.pk', 'ID: XQP2YJGMK'],
 			accent: '#a3e635',
-			art: 'seo',
-			verifyUrl: 'https://digiskills.pk/'
+			image: '/Certificates/01-seo.webp',
+			verifyUrl: 'https://digiskills.pk/verify/'
 		},
 		{
-			id: 'aws',
-			title: 'AWS Certified Cloud Practitioner',
-			provider: 'Amazon Web Services',
-			category: 'cloud',
-			categoryLabel: 'Cloud & DevOps',
+			id: 'google-ai-essentials',
+			title: 'Google AI Essentials',
+			provider: 'Google · Coursera',
+			category: 'other',
+			categoryLabel: 'Other',
 			description:
-				'Foundational understanding of AWS cloud services, security, architecture, pricing, and support.',
-			date: 'Oct 25, 2025',
-			tags: ['Amazon Web Services', 'CLF-C02'],
+				'Learned practical AI concepts, prompting techniques, and how to apply generative AI tools productively in everyday work.',
+			date: 'Feb 13, 2025',
+			tags: ['Google', 'Coursera'],
 			accent: '#60a5fa',
-			art: 'aws',
-			verifyUrl: 'https://aws.amazon.com/certification/certified-cloud-practitioner/'
+			image: '/Certificates/02-google-ai-essentials.webp',
+			verifyUrl: 'https://coursera.org/share/b29221c6a11951c44c8b5373b496046c'
 		},
 		{
-			id: 'cybersecurity',
-			title: 'Introduction to Cybersecurity',
-			provider: 'Cisco Networking Academy',
+			id: 'technical-support',
+			title: 'Technical Support Fundamentals',
+			provider: 'Google · Coursera',
 			category: 'networking',
 			categoryLabel: 'Networking',
 			description:
-				'Learned the basics of cybersecurity, threats, vulnerabilities, and best practices to protect systems and networks.',
-			date: 'Sep 10, 2025',
-			tags: ['Cisco Networking Academy', 'CCNA Intro'],
-			accent: '#a855f7',
-			art: 'cisco',
-			verifyUrl: 'https://www.netacad.com/courses/introduction-to-cybersecurity'
+				'Covered IT support foundations including hardware, networking, troubleshooting, customer support, and system basics.',
+			date: 'Feb 04, 2025',
+			tags: ['Google', 'IT Support'],
+			accent: '#38bdf8',
+			image: '/Certificates/03-technical-support-fundamentals.webp',
+			verifyUrl: 'https://coursera.org/share/5ab73297cc4969020995c4adf838d283'
 		},
 		{
-			id: 'meta-frontend',
-			title: 'Meta Front-End Developer',
-			provider: 'Meta (Facebook)',
+			id: 'success-mindset',
+			title: 'Success Mindset',
+			provider: 'HP LIFE',
+			category: 'other',
+			categoryLabel: 'Other',
+			description:
+				'Built a growth-focused mindset for setting goals, staying resilient, and creating habits that support long-term success.',
+			date: 'May 31, 2025',
+			tags: ['HP LIFE', 'Soft Skills'],
+			accent: '#f59e0b',
+			image: '/Certificates/04-success-mindset.webp',
+			verifyUrl: 'https://www.life-global.org/certificate/54bcc737-e2fa-460e-9c8d-c663a4dcee37'
+		},
+		{
+			id: 'critical-infrastructure',
+			title: 'Critical Infrastructure Protection',
+			provider: 'OPSWAT Academy',
+			category: 'networking',
+			categoryLabel: 'Networking',
+			description:
+				'Understood threats to critical infrastructure and foundational approaches to protect essential systems and assets.',
+			date: 'Sep 02, 2025',
+			tags: ['OPSWAT Academy', 'Security'],
+			accent: '#a855f7',
+			image: '/Certificates/05-critical-infrastructure-protection.webp',
+			verifyUrl: 'https://learn.opswatacademy.com/certificate/64kbY3fYtA'
+		},
+		{
+			id: 'hp-life-ambassador',
+			title: 'HP LIFE Ambassador',
+			provider: 'HP LIFE',
+			category: 'other',
+			categoryLabel: 'Other',
+			description:
+				'Earned the HP LIFE Ambassador badge for completing learning milestones and representing digital skills development.',
+			date: 'May 29, 2025',
+			tags: ['HP LIFE', 'Ambassador'],
+			accent: '#22c55e',
+			image: '/Certificates/06-hp-life-ambassador.webp',
+			verifyUrl: 'https://www.life-global.org/en/badges/3e7ac791-5e72-4cf7-b71f-f82ada9c5446'
+		},
+		{
+			id: 'business-email',
+			title: 'Business Email',
+			provider: 'HP LIFE',
+			category: 'other',
+			categoryLabel: 'Other',
+			description:
+				'Learned professional email communication, structure, tone, and best practices for clear business correspondence.',
+			date: 'May 29, 2025',
+			tags: ['HP LIFE', 'Communication'],
+			accent: '#14b8a6',
+			image: '/Certificates/07-business-email.webp',
+			verifyUrl: 'https://www.life-global.org/certificate/6545f990-cd37-4a01-b5b3-86af5649a34e'
+		},
+		{
+			id: 'it-business-success',
+			title: 'IT for Business Success',
+			provider: 'HP LIFE',
+			category: 'other',
+			categoryLabel: 'Other',
+			description:
+				'Explored how technology supports business operations, productivity, decision-making, and digital transformation.',
+			date: 'May 31, 2025',
+			tags: ['HP LIFE', 'Business IT'],
+			accent: '#818cf8',
+			image: '/Certificates/08-it-for-business-success.webp',
+			verifyUrl: 'https://www.life-global.org/certificate/1200d2aa-1d1f-4426-becb-ccc3c70525a9'
+		},
+		{
+			id: 'job-interviewing',
+			title: 'Job Interviewing',
+			provider: 'HP LIFE',
+			category: 'other',
+			categoryLabel: 'Other',
+			description:
+				'Prepared for interviews with practical techniques for storytelling, confidence, and presenting skills effectively.',
+			date: 'Sep 24, 2024',
+			tags: ['HP LIFE', 'Career'],
+			accent: '#fb7185',
+			image: '/Certificates/09-job-interviewing.webp',
+			verifyUrl: 'https://www.life-global.org/certificate/d382a308-0869-4f3a-aaa7-e59d0a275797'
+		},
+		{
+			id: 'wordpress',
+			title: 'Build a Free Website with WordPress',
+			provider: 'Coursera',
 			category: 'web',
 			categoryLabel: 'Web Development',
 			description:
-				'Completed professional certification in front-end development covering HTML, CSS, JavaScript, React, and web design principles.',
-			date: 'Aug 20, 2025',
-			tags: ['Meta', 'Professional Certificate'],
-			accent: '#f59e0b',
-			art: 'meta',
-			verifyUrl: 'https://www.coursera.org/professional-certificates/meta-front-end-developer'
+				'Created and customized a free WordPress website with pages, content structure, and essential site-building workflows.',
+			date: 'Feb 05, 2025',
+			tags: ['Coursera', 'WordPress'],
+			accent: '#06b6d4',
+			image: '/Certificates/10-wordpress.webp',
+			verifyUrl: 'https://coursera.org/share/1e56a63e189436472b90cd5946725afd'
+		},
+		{
+			id: 'microsoft-excel',
+			title: 'Using Basic Formulas and Functions in Microsoft Excel',
+			provider: 'Coursera',
+			category: 'other',
+			categoryLabel: 'Other',
+			description:
+				'Practiced Excel formulas and functions including calculations, SUM/SUMIF, averages, and spreadsheet analysis basics.',
+			date: 'Jul 17, 2024',
+			tags: ['Coursera', 'Microsoft Excel'],
+			accent: '#10b981',
+			image: '/Certificates/11-microsoft-excel.webp',
+			verifyUrl: 'https://coursera.org/share/47e324fae03d8976d777400309b61ba5'
 		}
 	];
 
 	const stats = [
-		{ Icon: Award, value: '04+', label: 'Certificates Earned' },
+		{ Icon: Award, value: '11+', label: 'Certificates Earned' },
 		{ Icon: GraduationCap, value: '03+', label: 'Years of Learning' },
 		{ Icon: Trophy, value: '100+', label: 'Skills Gained' },
 		{ Icon: TrendingUp, value: 'Continuous', label: 'Learning Journey' }
@@ -168,28 +266,8 @@
 						aria-label={`View ${certificate.title} certificate`}
 						onclick={() => openCertificate(certificate)}
 					>
-						<div class="certificate-art {certificate.art}">
-							{#if certificate.art === 'seo'}
-								<div class="art-logo">DigiSkills<span>.pk</span></div>
-								<div class="art-seal"><Search strokeWidth={1.5} /></div>
-								<strong>TRAINING<br />CERTIFICATE</strong>
-								<small>USMAN FAROOQ</small>
-							{:else if certificate.art === 'aws'}
-								<div class="art-logo aws-logo">aws</div>
-								<strong>AWS Certified<br />Cloud Practitioner</strong>
-								<small>Amazon Web Services</small>
-								<div class="aws-angle"></div>
-							{:else if certificate.art === 'cisco'}
-								<div class="art-logo cisco-logo">CISCO</div>
-								<strong>Introduction to<br />Cybersecurity</strong>
-								<small>Networking Academy</small>
-								<div class="art-signature">Certified</div>
-							{:else}
-								<div class="art-logo meta-logo">∞ <span>Meta</span></div>
-								<strong>Meta Front-End Developer</strong>
-								<small>Professional Certificate</small>
-								<div class="art-signature">Certificate</div>
-							{/if}
+						<div class="certificate-art">
+							<SkeletonImage src={certificate.image} alt={certificate.title} />
 						</div>
 						<span class="preview-hover" aria-hidden="true">
 							<Eye strokeWidth={2} />
@@ -270,28 +348,8 @@
 			<button type="button" class="cert-modal-close" aria-label="Close certificate" onclick={closeCertificate}>
 				<X strokeWidth={2} />
 			</button>
-			<div class="certificate-art {viewing.art} modal-art">
-				{#if viewing.art === 'seo'}
-					<div class="art-logo">DigiSkills<span>.pk</span></div>
-					<div class="art-seal"><Search strokeWidth={1.5} /></div>
-					<strong>TRAINING<br />CERTIFICATE</strong>
-					<small>USMAN FAROOQ</small>
-				{:else if viewing.art === 'aws'}
-					<div class="art-logo aws-logo">aws</div>
-					<strong>AWS Certified<br />Cloud Practitioner</strong>
-					<small>Amazon Web Services</small>
-					<div class="aws-angle"></div>
-				{:else if viewing.art === 'cisco'}
-					<div class="art-logo cisco-logo">CISCO</div>
-					<strong>Introduction to<br />Cybersecurity</strong>
-					<small>Networking Academy</small>
-					<div class="art-signature">Certified</div>
-				{:else}
-					<div class="art-logo meta-logo">∞ <span>Meta</span></div>
-					<strong>Meta Front-End Developer</strong>
-					<small>Professional Certificate</small>
-					<div class="art-signature">Certificate</div>
-				{/if}
+			<div class="certificate-art modal-art">
+				<img src={viewing.image} alt={viewing.title} class="cert-modal-img" />
 			</div>
 			<div class="cert-modal-meta">
 				<p>{viewing.title}</p>
@@ -538,150 +596,32 @@
 
 	.certificate-art {
 		position: relative;
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
+		display: block;
 		aspect-ratio: 1.58;
-		padding: 1.05rem 1.2rem;
 		border-radius: 0.45rem;
 		overflow: hidden;
-		color: #172033;
-		background:
-			linear-gradient(135deg, transparent 55%, rgba(35, 95, 150, 0.12)),
-			#f5f4ef;
+		background: color-mix(in srgb, var(--fg) 4%, var(--bg));
 		transition: transform 0.45s ease;
 	}
 
-	.certificate-art::before,
-	.certificate-art::after {
-		content: '';
-		position: absolute;
-		border-radius: 50%;
-		border: 1px solid rgba(25, 80, 120, 0.12);
+	.certificate-art :global(.img-shell),
+	.certificate-art :global(.img-real) {
+		width: 100%;
+		height: 100%;
 	}
 
-	.certificate-art::before {
-		width: 9rem;
-		height: 9rem;
-		right: -3rem;
-		top: -3.5rem;
+	.certificate-art :global(.img-real) {
+		object-fit: cover;
+		object-position: center;
 	}
 
-	.certificate-art::after {
-		width: 6rem;
-		height: 6rem;
-		right: -2rem;
-		top: -2rem;
-	}
-
-	.art-logo {
-		position: absolute;
-		top: 0.7rem;
-		left: 0.85rem;
-		font-size: 0.58rem;
-		font-weight: 800;
-		letter-spacing: -0.02em;
-	}
-
-	.art-logo span {
-		color: #eb6b25;
-	}
-
-	.certificate-art strong {
-		position: relative;
-		z-index: 1;
-		font-size: clamp(0.72rem, 1.3vw, 1rem);
-		line-height: 1.15;
-		letter-spacing: -0.025em;
-	}
-
-	.certificate-art small {
-		position: relative;
-		z-index: 1;
-		margin-top: 0.45rem;
-		font-size: 0.4rem;
-		font-weight: 700;
-		letter-spacing: 0.12em;
-	}
-
-	.art-seal {
-		position: absolute;
-		right: 1.2rem;
-		top: 50%;
-		display: grid;
-		place-items: center;
-		width: 3.7rem;
-		height: 3.7rem;
-		color: #2c6388;
-		border: 0.35rem solid rgba(51, 124, 166, 0.18);
-		border-radius: 50%;
-		transform: translateY(-50%);
-	}
-
-	.art-seal :global(svg) {
-		width: 1.65rem;
-	}
-
-	.aws {
-		justify-content: flex-end;
-		background: linear-gradient(105deg, #f7f7f4 0 72%, #dce8f4 72%);
-	}
-
-	.aws-logo {
-		font-size: 0.82rem;
-		text-transform: lowercase;
-	}
-
-	.aws strong {
-		margin-bottom: 0.4rem;
-	}
-
-	.aws-angle {
-		position: absolute;
-		inset: 0 0 0 auto;
-		width: 28%;
-		border-left: 0.45rem solid #4385c6;
-		transform: skewX(-10deg);
-		transform-origin: bottom;
-	}
-
-	.cisco {
-		justify-content: flex-end;
-		background: linear-gradient(160deg, #e8eff8, #f8f8f6 45%);
-	}
-
-	.cisco-logo {
-		color: #176698;
-		font-size: 0.58rem;
-		letter-spacing: 0.08em;
-	}
-
-	.meta {
-		justify-content: flex-end;
-		background: radial-gradient(circle at 78% 20%, #d7edff, transparent 38%), #f8f8f6;
-	}
-
-	.meta-logo {
-		display: flex;
-		gap: 0.25rem;
-		align-items: center;
-		color: #1769e0;
-		font-size: 1rem;
-	}
-
-	.meta-logo span {
-		color: #26374b;
-		font-size: 0.55rem;
-	}
-
-	.art-signature {
-		position: absolute;
-		right: 1rem;
-		bottom: 0.85rem;
-		font-family: cursive;
-		font-size: 0.55rem;
-		font-style: italic;
-		opacity: 0.6;
+	.cert-modal-img {
+		display: block;
+		width: 100%;
+		height: 100%;
+		object-fit: contain;
+		object-position: center;
+		background: #0a0a0c;
 	}
 
 	.certificate-info {

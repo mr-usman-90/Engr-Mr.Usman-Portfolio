@@ -10,8 +10,8 @@
 	let { open, onClose }: Props = $props();
 
 	const CV_VIEW =
-		'https://drive.google.com/file/d/1YC8c3fZ3pHT_xKiLWOTKqaTiIVATAtar/view?usp=drive_link';
-	const CV_PREVIEW = 'https://drive.google.com/file/d/1YC8c3fZ3pHT_xKiLWOTKqaTiIVATAtar/preview';
+		'https://drive.google.com/file/d/13BA0Xwe1t5-2jtTYuNjZyVIENjmf4D-L/view?usp=sharing';
+	const CV_PREVIEW = 'https://drive.google.com/file/d/13BA0Xwe1t5-2jtTYuNjZyVIENjmf4D-L/preview';
 
 	let overlayEl: HTMLDivElement | undefined = $state();
 	let panelEl: HTMLDivElement | undefined = $state();

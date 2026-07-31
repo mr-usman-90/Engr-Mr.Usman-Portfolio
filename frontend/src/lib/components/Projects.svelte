@@ -80,7 +80,7 @@
 				"Complete school management with student records, attendance tracking, and grades in one place.",
 			category: "fullstack",
 			categoryLabel: "Full Stack",
-			tech: ["React", "Node.js", "MongoDB", "Tailwind"],
+			tech: ["React", "Vite", "Node.js", "Express.js", "MongoDB", "Tailwind", "Session Auth + RBAC", "Redux Toolkit"],
 			theme: "#a855f7",
 			image: "/projects/School/01-school.webp",
 			images: [
@@ -130,7 +130,7 @@
 				"Responsive portfolio to showcase work and skills, polished with modern motion.",
 			category: "web",
 			categoryLabel: "Web Application",
-			tech: ["HTML", "CSS", "JavaScript", "GSAP"],
+			tech: ["HTML5", "CSS3", "JavaScript", "Tailwind", "GSAP"],
 			theme: "#8b5cf6",
 			image: "/projects/Portfolio-website/01-PFW.webp",
 			images: [
@@ -155,7 +155,7 @@
 				"Full stack inventory system for stock tracking, product records, and live reports in one dashboard.",
 			category: "fullstack",
 			categoryLabel: "Full Stack",
-			tech: ["Next.js", "Tailwind", "Stripe", "MongoDB"],
+			tech: ["React", "Vite", "Node.js", "Express.js", "MongoDB", "Tailwind", "Stripe", "Session Auth + RBAC"],
 			theme: "#3b82f6",
 			image: "/projects/Bricks-Manufcturing/01-BM.webp",
 			images: [
@@ -205,7 +205,7 @@
 				"A modern learning management system for managing courses, students, assignments, and educational workflows in one place.",
 			category: "web",
 			categoryLabel: "Web Application",
-			tech: ["React", "Node.js", "MongoDB", "Tailwind"],
+			tech: ["React", "Node.js", "Express.js", "MongoDB", "Tailwind", "Session Auth + RBAC"],
 			theme: "#fb7185",
 			image: "/projects/LMS-Website/01-LMS.webp",
 			images: [
@@ -230,7 +230,7 @@
 				"Describe your idea and let our AI generate a stunning, click-worthy thumbnail in seconds.",
 			category: "web",
 			categoryLabel: "Web Application",
-			tech: ["HTML5", "CSS3", "JavaScript", "Tailwind"],
+			tech: ["React", "Vite", "Node.js", "Express.js","Tailwind"],
 			theme: "#14b8a6",
 			image: "/projects/Thumbnailgo/01-TNG.webp",
 			images: [
@@ -255,7 +255,7 @@
 				"An immersive movie booking experience to explore showtimes, reserve seats, and dive into the cosmic world of Guardians of the Galaxy.",
 			category: "web",
 			categoryLabel: "Web Application",
-			tech: ["HTML5", "CSS3", "JavaScript", "GSAP"],
+			tech: ["React", "Vite", "Node.js", "Express.js","Tailwind", "GSAP"],
 			theme: "#f97316",
 			image: "/projects/QuickShow/01-QS.webp",
 			images: [
@@ -280,7 +280,7 @@
 				"Upload product images and a model photo our AI instantly produces professional lifestyle imagery and short-form videos optimized for commercials & Reels.",
 			category: "fullstack",
 			categoryLabel: "Full Stack",
-			tech: ["Next.js", "Node.js", "MongoDB", "Tailwind"],
+			tech: ["React", "Vite", "Node.js", "Express.js","Tailwind"],
 			theme: "#22c55e",
 			image: "/projects/UGC-Ai/01-UGC.webp",
 			images: [
