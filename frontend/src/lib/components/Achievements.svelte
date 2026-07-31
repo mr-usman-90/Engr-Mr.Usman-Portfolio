@@ -301,7 +301,7 @@
 					aria-selected={activeFilter === filter.id}
 					onclick={() => (activeFilter = filter.id)}
 				>
-					<filter.Icon class="filter-icon" strokeWidth={1.8} />
+					<filter.Icon strokeWidth={1.8} />
 					{filter.label}
 				</button>
 			{/each}
@@ -390,7 +390,7 @@
 		<div class="stats-panel">
 			{#each stats as stat}
 				<article class="stat-item">
-					<stat.Icon class="stat-icon" strokeWidth={1.75} />
+					<stat.Icon strokeWidth={1.75} />
 					<strong>{stat.value}</strong>
 					<span>{stat.label}</span>
 				</article>
@@ -538,7 +538,7 @@
 			box-shadow 0.25s ease;
 	}
 
-	.filter-icon {
+	.filter-btn :global(svg) {
 		width: 0.95rem;
 		height: 0.95rem;
 	}
@@ -980,7 +980,7 @@
 		border-right: 0;
 	}
 
-	.stat-icon {
+	.stat-item :global(svg) {
 		width: 1.75rem;
 		height: 1.75rem;
 		margin-bottom: 0.55rem;
