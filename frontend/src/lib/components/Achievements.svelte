@@ -3,8 +3,10 @@
 		Award,
 		BarChart3,
 		CalendarDays,
+		Check,
 		Cloud,
 		Code2,
+		Copy,
 		Ellipsis,
 		ExternalLink,
 		Eye,
@@ -32,6 +34,7 @@
 		accent: string;
 		image: string;
 		verifyUrl: string;
+		certificateId?: string;
 	};
 
 	const filters: { id: Filter; label: string; Icon: typeof LayoutGrid }[] = [
@@ -56,7 +59,8 @@
 			tags: ['DigiSkills.pk', 'ID: XQP2YJGMK'],
 			accent: '#a3e635',
 			image: '/Certificates/01-seo.webp',
-			verifyUrl: 'https://digiskills.pk/verify/'
+			verifyUrl: 'https://digiskills.pk/verify/',
+			certificateId: 'XQP2YJGMK'
 		},
 		{
 			id: 'google-ai-essentials',
@@ -209,6 +213,8 @@
 
 	let activeFilter = $state<Filter>('all');
 	let viewing = $state<Certificate | null>(null);
+	let copiedId = $state<string | null>(null);
+	let copyTimer: ReturnType<typeof setTimeout> | undefined;
 
 	const visibleCertificates = $derived(
 		activeFilter === 'all'
@@ -224,6 +230,52 @@
 	function closeCertificate() {
 		viewing = null;
 		document.body.style.overflow = '';
+	}
+
+	async function copyCertificateId(id: string, event: Event) {
+		event.stopPropagation();
+
+		const markCopied = () => {
+			copiedId = id;
+			if (copyTimer) clearTimeout(copyTimer);
+			copyTimer = setTimeout(() => {
+				copiedId = null;
+			}, 1600);
+		};
+
+		window.__allowProgrammaticCopy = true;
+		try {
+			if (navigator.clipboard?.writeText) {
+				await navigator.clipboard.writeText(id);
+				markCopied();
+				return;
+			}
+			throw new Error('clipboard unavailable');
+		} catch {
+			try {
+				const ta = document.createElement('textarea');
+				ta.value = id;
+				ta.setAttribute('readonly', '');
+				ta.setAttribute('aria-hidden', 'true');
+				ta.style.cssText = 'position:fixed;top:0;left:0;width:1px;height:1px;opacity:0;';
+				document.body.appendChild(ta);
+				ta.focus();
+				ta.select();
+				ta.setSelectionRange(0, id.length);
+				const ok = document.execCommand('copy');
+				document.body.removeChild(ta);
+				if (ok) markCopied();
+			} catch {
+				/* copy failed */
+			}
+		} finally {
+			window.__allowProgrammaticCopy = false;
+		}
+	}
+
+	function isIdTag(tag: string, certificateId?: string) {
+		if (!certificateId) return false;
+		return tag === `ID: ${certificateId}` || tag.includes(certificateId);
 	}
 </script>
 
@@ -281,7 +333,27 @@
 						<p class="description">{certificate.description}</p>
 						<ul class="tag-list" aria-label="Certificate details">
 							{#each certificate.tags as tag}
-								<li>{tag}</li>
+								<li class:id-tag={isIdTag(tag, certificate.certificateId)}>
+									{#if isIdTag(tag, certificate.certificateId) && certificate.certificateId}
+										<span>ID: {certificate.certificateId}</span>
+										<button
+											type="button"
+											class="copy-id-btn"
+											data-allow-copy
+											aria-label={`Copy certificate ID ${certificate.certificateId}`}
+											title={copiedId === certificate.certificateId ? 'Copied!' : 'Copy ID'}
+											onclick={(e) => copyCertificateId(certificate.certificateId!, e)}
+										>
+											{#if copiedId === certificate.certificateId}
+												<Check strokeWidth={2.25} />
+											{:else}
+												<Copy strokeWidth={2.25} />
+											{/if}
+										</button>
+									{:else}
+										{tag}
+									{/if}
+								</li>
 							{/each}
 						</ul>
 					</div>
@@ -682,6 +754,65 @@
 		color: color-mix(in srgb, var(--muted) 80%, var(--fg));
 		font-size: 0.62rem;
 		font-weight: 600;
+	}
+
+	.tag-list li.id-tag {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.3rem;
+		padding: 0.28rem 0.28rem 0.28rem 0.48rem;
+		border: 1px solid color-mix(in srgb, var(--accent) 45%, transparent);
+		border-radius: 0.35rem;
+		background: color-mix(in srgb, var(--accent) 8%, transparent);
+		color: var(--accent);
+		font-size: 0.58rem;
+		font-weight: 700;
+		letter-spacing: 0.06em;
+		text-transform: uppercase;
+	}
+
+	.copy-id-btn {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		flex-shrink: 0;
+		width: 1.55rem;
+		height: 1.55rem;
+		min-width: 1.55rem;
+		min-height: 1.55rem;
+		padding: 0;
+		border: 0;
+		border-radius: 0.28rem;
+		background: color-mix(in srgb, var(--accent) 14%, transparent);
+		color: var(--accent);
+		cursor: pointer;
+		-webkit-tap-highlight-color: transparent;
+		touch-action: manipulation;
+		transition:
+			background-color 0.2s ease,
+			color 0.2s ease,
+			transform 0.15s ease;
+	}
+
+	.copy-id-btn:hover,
+	.copy-id-btn:active {
+		background: color-mix(in srgb, var(--accent) 28%, transparent);
+		color: var(--accent);
+	}
+
+	.copy-id-btn:active {
+		transform: scale(0.94);
+	}
+
+	.copy-id-btn:focus-visible {
+		outline: 1.5px solid color-mix(in srgb, var(--accent) 70%, transparent);
+		outline-offset: 1px;
+	}
+
+	.copy-id-btn :global(svg) {
+		width: 0.78rem;
+		height: 0.78rem;
+		pointer-events: none;
 	}
 
 	.certificate-meta {

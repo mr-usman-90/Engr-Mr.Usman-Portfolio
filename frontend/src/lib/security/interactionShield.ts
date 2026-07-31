@@ -1,6 +1,7 @@
 declare global {
 	interface Window {
 		__interactionShieldReady?: boolean;
+		__allowProgrammaticCopy?: boolean;
 	}
 }
 
@@ -13,7 +14,9 @@ export function setupInteractionShield(): void {
 	if (typeof window === 'undefined' || window.__interactionShieldReady) return;
 
 	const blockPointerAction = (event: Event) => {
+		if (window.__allowProgrammaticCopy) return;
 		if (isEditableTarget(event.target)) return;
+		if (event.target instanceof Element && event.target.closest('[data-allow-copy]')) return;
 		event.preventDefault();
 	};
 
